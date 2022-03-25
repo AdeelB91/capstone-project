@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>App-Title</title>
       </Head>
-      <h1>App-Title</h1>
+      <h1>Homepage</h1>
     </>
   );
 }
