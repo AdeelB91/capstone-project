@@ -8,18 +8,16 @@ export function Postform() {
   }
 
   return (
-    <>
-      <Post>
-        <div>
-          <label>Post</label>
-          <input type="text" id="inputText" required name="text" />
-          <button type="submit" onClick={handleClick}>
-            Create Post
-          </button>
-          <span id="display"></span>
-        </div>
-      </Post>
-    </>
+    <Post>
+      <div>
+        <label>Post</label>
+        <input type="text" id="inputText" required name="text" />
+        <button type="submit" onClick={handleClick}>
+          Create Post
+        </button>
+        <span id="display"></span>
+      </div>
+    </Post>
   );
 }
 
