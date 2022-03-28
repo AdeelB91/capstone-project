@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>App-Title</title>
+        <title>RatingApp</title>
       </Head>
       <h1>App-Title</h1>
       <Postform />

@@ -1,21 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export function Postform() {
-  function handleClick(event) {
+  const [postText, setPostText] = useState("");
+
+  function handleSubmit(event) {
     event.preventDefault();
-    document.getElementById("display").innerHTML =
-      document.getElementById("inputText").value;
+    setPostText(event.target.elements.text.value);
+
+    // if (!postText) return alert("Please type in your Post.");
   }
 
   return (
-    <Post>
+    <Post onSubmit={handleSubmit}>
       <div>
-        <label>Post</label>
+        <label htmlFor="inputText">Post</label>
         <input type="text" id="inputText" required name="text" />
-        <button type="submit" onClick={handleClick}>
-          Create Post
-        </button>
-        <span id="display"></span>
+        <button type="submit">Create Post</button>
+        <span id="display">{postText}</span>
       </div>
     </Post>
   );
@@ -28,6 +30,9 @@ const Post = styled.form`
     gap: 15px;
     display: flex;
     flex-direction: column;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    padding: 20px;
   }
   label {
     font-size: medium;
