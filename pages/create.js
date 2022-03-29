@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Postform } from "../components/PostForm/PostForm";
 
 export default function CreatePage() {
