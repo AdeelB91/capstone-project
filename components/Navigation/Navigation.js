@@ -8,8 +8,8 @@ export default function Navigation() {
   return (
     <>
       <Nav>
-        <Link href="/" passHref>
-          <IconLink className={router.pathname == "/" ? "active" : ""}>
+        <Link href="/homepage" passHref>
+          <IconLink className={router.pathname == "/homepage" ? "active" : ""}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="40px"

@@ -1,28 +1,15 @@
 import { GlobalStyle } from "../components/GlobalStyle/GlobalStyle";
-import Navigation from "../components/Navigation/Navigation";
-import styled from "styled-components";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
-      <GlobalStyle />
-      <AppHeader>
-        <AppTitle>App-Title</AppTitle>
-      </AppHeader>
-      <Component {...pageProps} />
-      <Navigation />
+      <SessionProvider session={session}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   );
 }
-const AppHeader = styled.header`
-  background-color: darkblue;
-  height: 100px;
-  display: flex;
-  align-items: center;
-`;
-
-const AppTitle = styled.h1`
-  color: white;
-`;
 
 export default MyApp;
