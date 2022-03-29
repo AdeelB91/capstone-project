@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import CreatePage from "./create";
 import { Postform } from "../components/PostForm/PostForm";
 import styled from "styled-components";
 
@@ -8,6 +10,7 @@ export default function Home() {
       <Head>
         <title>RatingApp</title>
       </Head>
+      <h1>Homepage</h1>
       <AppHeader>
         <AppTitle>App-Title</AppTitle>
       </AppHeader>
