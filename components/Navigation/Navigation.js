@@ -62,7 +62,7 @@ const Nav = styled.div`
   bottom: 0;
   width: 100%;
   background-color: darkblue;
-  padding: 15px;
+  padding: 10px;
 `;
 
 const IconLink = styled.a`

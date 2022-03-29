@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 export function Postform() {
   const [postText, setPostText] = useState("");
+  const [value, setValue] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
     setPostText(event.target.elements.text.value);
+    event.target.elements.text.value = "";
+    //setValue("");
 
     // if (!postText) return alert("Please type in your Post.");
   }
@@ -14,7 +17,7 @@ export function Postform() {
   return (
     <>
       <PageTitle>Beitrag erstellen</PageTitle>
-      <Post onSubmit={handleSubmit}>
+      <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="inputText">Beitrag</label>
           <input type="text" id="inputText" required name="text" />
