@@ -10,9 +10,10 @@ export default function Header() {
 
 const AppHeader = styled.header`
   background-color: #0b2b40;
-  height: 100px;
+  height: 8vh;
   display: flex;
   align-items: center;
+  padding: 1vh;
 `;
 
 const AppTitle = styled.h1`

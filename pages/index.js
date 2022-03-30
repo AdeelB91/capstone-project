@@ -5,12 +5,12 @@ import styled from "styled-components";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Head>
         <title>RatingApp</title>
       </Head>
       <h1>Homepage</h1>
-    </>
+    </main>
   );
 }
 
