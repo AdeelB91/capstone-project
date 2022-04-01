@@ -11,9 +11,7 @@ export default function HomePage() {
         <title>RatingApp</title>
       </Head>
       <Header />
-      <main>
-        <h1>Homepage</h1>
-      </main>
+      <main></main>
       <Navigation />
     </>
   );
@@ -24,10 +22,6 @@ const AppHeader = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
-`;
-
-const AppTitle = styled.h1`
-  color: white;
 `;
 
 export async function getServerSideProps(context) {

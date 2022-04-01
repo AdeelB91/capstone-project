@@ -47,5 +47,3 @@ const LoginContainer = styled.div`
     top: 1px;
   }
 `;
-
-// {session.user.name}
