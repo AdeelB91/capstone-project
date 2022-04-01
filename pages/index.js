@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
       <Landingpage>
         <svg
-          width="188"
+          width="180"
           height="170"
           viewBox="0 0 188 170"
           fill="none"
@@ -36,7 +36,7 @@ const Landingpage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 140px;
+  padding-top: 15vh;
   background: linear-gradient(180deg, #000000 0%, #809ab1 26.04%, #044179 100%);
   height: 100vh;
 `;
