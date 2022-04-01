@@ -8,7 +8,6 @@ export default function CreatePage() {
     <>
       <Header />
       <main>
-        <h1>Create-Page</h1>
         <Postform />
       </main>
       <Navigation />
