@@ -9,10 +9,11 @@ export default function Header() {
 }
 
 const AppHeader = styled.header`
-  background-color: darkblue;
-  height: 100px;
+  background-color: #0b2b40;
+  height: 8vh;
   display: flex;
   align-items: center;
+  padding: 1vh;
 `;
 
 const AppTitle = styled.h1`

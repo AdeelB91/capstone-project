@@ -61,9 +61,9 @@ const Nav = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: darkblue;
+  background-color: #0b2b40;
   padding: 10px;
-  height: 65px;
+  height: 8vh;
 `;
 
 const IconLink = styled.a`

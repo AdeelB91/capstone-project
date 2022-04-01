@@ -4,11 +4,11 @@ import Navigation from "../components/Navigation/Navigation";
 
 export default function Profile() {
   return (
-    <>
+    <main>
       <Header />
       <h1>Profile-Page</h1>
       <Navigation />
-    </>
+    </main>
   );
 }
 export async function getServerSideProps(context) {
