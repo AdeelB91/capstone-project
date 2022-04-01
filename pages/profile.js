@@ -1,14 +1,17 @@
 import { getSession } from "next-auth/react";
 import Header from "../components/Header/Header";
+import LoginButton from "../components/LogInButton/LogInButton";
 import Navigation from "../components/Navigation/Navigation";
 
 export default function Profile() {
   return (
-    <main>
+    <>
       <Header />
-      <h1>Profile-Page</h1>
+      <main>
+        <h1>Profile-Page</h1>
+      </main>
       <Navigation />
-    </main>
+    </>
   );
 }
 export async function getServerSideProps(context) {

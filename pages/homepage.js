@@ -11,7 +11,9 @@ export default function HomePage() {
         <title>RatingApp</title>
       </Head>
       <Header />
-      <h1>Homepage</h1>
+      <main>
+        <h1>Homepage</h1>
+      </main>
       <Navigation />
     </>
   );
