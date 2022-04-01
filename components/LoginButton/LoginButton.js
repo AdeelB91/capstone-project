@@ -20,7 +20,7 @@ export default function LoginButton() {
 const LoginContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50%;
+  margin-top: 35vh;
   > button {
     width: fit-content;
     box-shadow: 0px 1px 0px 0px #1c1b18;
