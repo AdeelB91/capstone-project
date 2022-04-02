@@ -1,17 +1,16 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-export function Postform() {
-  const [postText, setPostText] = useState("");
-  const [value, setValue] = useState("");
-
+export function PostForm({
+  onSubmitPost,
+  disabled,
+  submitText,
+  error,
+  defaultValue,
+  id,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
-    setPostText(event.target.elements.text.value);
-    event.target.elements.text.value = "";
-    //setValue("");
-
-    // if (!postText) return alert("Please type in your Post.");
+    onSubmitPost(event.target.elements.text.value, event.target);
   }
 
   return (
@@ -19,12 +18,23 @@ export function Postform() {
       <PageTitle>Beitrag erstellen</PageTitle>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="inputText">Beitrag</label>
-          <input type="text" id="inputText" required name="text" />
-          <button type="submit">Beitrag erstellen</button>
+          <label htmlFor={`text-${id}`}>Beitrag</label>
+          <input
+            type="text"
+            id={`text-${id}`}
+            required
+            name="text"
+            defaultValue={defaultValue}
+          />
+          {error ? (
+            <p>
+              <strong>Error:</strong> {error}
+            </p>
+          ) : null}{" "}
         </div>
+        <input type="submit" value={submitText} disabled={disabled} />
       </Post>
-      <PostText id="display">{postText}</PostText>
+      {/* <PostText id="display">{onSubmitPost}</PostText> */}
     </>
   );
 }
@@ -40,6 +50,7 @@ const PageTitle = styled.h1`
 const Post = styled.form`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   > div {
     gap: 15px;
     display: flex;
@@ -64,10 +75,10 @@ const Post = styled.form`
   }
 `;
 
-const PostText = styled.span`
-  display: flex;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  padding: 20px;
-  margin: 50px;
-`;
+// const PostText = styled.span`
+//   display: flex;
+//   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+//     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+//   padding: 20px;
+//   margin: 50px;
+// `;
