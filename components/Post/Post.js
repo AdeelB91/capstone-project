@@ -1,4 +1,4 @@
-import { Postform } from "../Postform/Postform";
+import { PostForm } from "../Postform/Postform";
 import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
@@ -19,7 +19,7 @@ export function Post({ post }) {
   if (isEditMode) {
     return (
       <Container>
-        <Postform
+        <PostForm
           defaultValue={post.text}
           onSubmitPost={handleEdit}
           disabled={isUpdating}
@@ -74,6 +74,9 @@ export const Container = styled.article`
   margin-top: 1vh;
   > form {
     height: 100%;
+  }
+  q {
+    margin-bottom: 1vh;
   }
 `;
 

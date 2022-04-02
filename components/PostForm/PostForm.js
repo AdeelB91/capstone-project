@@ -31,10 +31,9 @@ export function PostForm({
               <strong>Error:</strong> {error}
             </p>
           ) : null}{" "}
+          <input type="submit" value={submitText} disabled={disabled} />
         </div>
-        <input type="submit" value={submitText} disabled={disabled} />
       </Post>
-      {/* <PostText id="display">{onSubmitPost}</PostText> */}
     </>
   );
 }
@@ -48,13 +47,11 @@ const PageTitle = styled.h1`
 `;
 
 const Post = styled.form`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   > div {
     gap: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
       rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 20px;
@@ -66,7 +63,7 @@ const Post = styled.form`
   input[type="text"] {
     appearance: none;
     padding: 1rem;
-    width: 300px;
+    width: auto;
     border: 1px solid rgb(190 190 190);
     border-radius: 3px;
   }

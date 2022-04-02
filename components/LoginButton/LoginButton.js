@@ -6,7 +6,11 @@ export default function LoginButton() {
   if (session) {
     return (
       <LoginContainer>
-        <button onClick={() => signOut()}>Sign out</button>
+        <button
+          onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+        >
+          Sign out
+        </button>
       </LoginContainer>
     );
   }
