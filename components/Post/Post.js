@@ -4,7 +4,10 @@ import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
 
-const dateFormatter = Intl.DateTimeFormat("en", { dateStyle: "short" });
+const dateFormatter = Intl.DateTimeFormat("en", {
+  dateStyle: "long",
+  timeStyle: "short",
+});
 
 export function Post({ post }) {
   const { activateEditMode, error, handleEdit, isEditMode, isUpdating } =
@@ -33,10 +36,12 @@ export function Post({ post }) {
     return (
       <Container>
         <Info>
-          {post.userId?.name ? <div> {post.userId.name}</div> : null}
-          {post.createdAt ? (
-            <div>{dateFormatter.format(new Date(post.createdAt))}</div>
-          ) : null}
+          <ProfilePart>
+            {post.userId?.image ? (
+              <img alt="profilepic" src={post.userId.image} />
+            ) : null}
+            {post.userId?.name ? <div> {post.userId.name}</div> : null}
+          </ProfilePart>
           {isOwnPost ? (
             <Buttons>
               <button onClick={activateEditMode}>Edit</button>
@@ -58,6 +63,11 @@ export function Post({ post }) {
           ) : null}
         </Info>
         <q>{post.text}</q>
+        {post.createdAt ? (
+          <TimeStamp>
+            {dateFormatter.format(new Date(post.createdAt))}
+          </TimeStamp>
+        ) : null}
       </Container>
     );
   }
@@ -76,8 +86,17 @@ export const Container = styled.article`
     height: 100%;
   }
   q {
-    margin-bottom: 1vh;
+    margin: 2vh;
   }
+  img {
+    width: 30px;
+    border-radius: 15px;
+  }
+`;
+const TimeStamp = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.3vh;
 `;
 
 const Info = styled.div`
@@ -94,5 +113,16 @@ const Buttons = styled.div`
   gap: 0.5rem;
   > button {
     flex: 1 0 auto;
+    font-size: 10px;
+    background-color: #0b2b40;
+    color: white;
+    padding: 2px;
   }
+`;
+
+const ProfilePart = styled.div`
+  top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;

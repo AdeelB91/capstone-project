@@ -67,8 +67,10 @@ const Post = styled.form`
     border: 1px solid rgb(190 190 190);
     border-radius: 3px;
   }
-  button[type="submit"] {
-    margin: 30px;
+  input[type="submit"] {
+    margin: 15px 40px;
+    background-color: #0b2b40;
+    color: white;
   }
 `;
 
