@@ -10,6 +10,7 @@ export default function Profile() {
       <Header />
       <main>
         <h1>Profile</h1>
+        {/* test */}
         <PostList />
         <LoginButton />
       </main>
