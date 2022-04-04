@@ -15,7 +15,6 @@ export function Post({ post }) {
 
   const { handleDelete, isDeleting } = useDeletePost(post);
 
-  // we can only edit or delete our own jokes…
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
 
