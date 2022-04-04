@@ -1,4 +1,4 @@
-import { PostForm } from "../Postform/Postform";
+import { PostForm } from "../PostForm/PostForm";
 import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";

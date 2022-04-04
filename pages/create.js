@@ -1,5 +1,5 @@
 import { getSession } from "next-auth/react";
-import { PostForm } from "../components/Postform/Postform";
+import { PostForm } from "../components/PostForm/PostForm";
 import Navigation from "../components/Navigation/Navigation";
 import { useCreatePost } from "../utils/hooks/useCreatedPost";
 import Header from "../components/Header/Header";
