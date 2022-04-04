@@ -13,6 +13,9 @@ export default function SignIn({ providers }) {
     }
   }, [session, router]);
 
+  if (!providers) {
+    return null;
+  }
   return (
     <LogInPage>
       <LogInContainer>
