@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getSession } from "next-auth/react";
 import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
+import PostList from "../components/PostList/PostList";
 
 export default function HomePage() {
   return (
@@ -11,7 +12,9 @@ export default function HomePage() {
         <title>RatingApp</title>
       </Head>
       <Header />
-      <main></main>
+      <main>
+        <PostList type="feed" />
+      </main>
       <Navigation />
     </>
   );
@@ -27,6 +30,14 @@ const AppHeader = styled.header`
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/signin",
+        permanent: false,
+      },
+    };
+  }
   return {
     props: {
       session,

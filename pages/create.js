@@ -1,14 +1,22 @@
 import { getSession } from "next-auth/react";
-import Header from "../components/Header/Header";
-import { Postform } from "../components/PostForm/PostForm";
+import { PostForm } from "../components/PostForm/PostForm";
 import Navigation from "../components/Navigation/Navigation";
+import { useCreatePost } from "../utils/hooks/useCreatedPost";
+import Header from "../components/Header/Header";
 
 export default function CreatePage() {
+  const { handleCreate, isCreating, error } = useCreatePost();
   return (
     <>
       <Header />
       <main>
-        <Postform />
+        <PostForm
+          onSubmitPost={handleCreate}
+          disabled={isCreating}
+          submitText={isCreating ? "Creating post…" : "Create post"}
+          error={error}
+          id="create"
+        />
       </main>
       <Navigation />
     </>
@@ -17,7 +25,14 @@ export default function CreatePage() {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/signin",
+        permanent: false,
+      },
+    };
+  }
   return {
     props: {
       session,
