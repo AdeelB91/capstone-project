@@ -31,7 +31,7 @@ const Ul = styled.ul`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 0;
+  margin-bottom: 3vh;
   padding: 0;
   > li {
     flex: 1 0 30ch;
