@@ -21,7 +21,8 @@ export default NextAuth({
       return { ...session, user: { ...session.user, id: user.id } };
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/auth/SignIn",
+    signIn: "/auth/signin",
   },
 });
