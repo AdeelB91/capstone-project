@@ -7,12 +7,12 @@ export function useCreatePost() {
   const [isCreating, setIsCreating] = useState(false);
   const [error, setError] = useState();
 
-  async function handleCreate(newText, form) {
+  async function handleCreate(category, newText, form) {
     setIsCreating(true);
     const response = await fetch("/api/posts", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ text: newText }),
+      body: JSON.stringify({ text: newText, category: category }),
     });
     const createdPost = await response.json();
     if (response.ok) {

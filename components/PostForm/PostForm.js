@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export function PostForm({
@@ -9,13 +10,17 @@ export function PostForm({
   defaultcategory,
   id,
 }) {
+  function handleChange(event) {
+    defaultcategory = event.target.value;
+  }
   function handleSubmit(event) {
     event.preventDefault();
     onSubmitPost(
-      event.target[select.selectedIndex].id,
+      defaultcategory,
       event.target.elements.text.value,
       event.target
     );
+    console.log(defaultcategory);
   }
 
   return (
@@ -25,6 +30,7 @@ export function PostForm({
         <div>
           <label htmlFor={`category-${id}`}>Choose a Category:</label>
           <select
+            onChange={handleChange}
             id={`category-${id}`}
             name="category"
             type="text"
@@ -32,11 +38,9 @@ export function PostForm({
             defaultcategory={defaultcategory}
           >
             <option value="Filme">Filme</option>
-            <option value="Serien">Serien</option>
+            <option value="Serien"> Serien</option>
             <option value="Bücher">Bücher</option>
             <option value="Podcasts">Podcasts</option>
-            <option value="Essen">Essen</option>
-            <option value="Trinken">Trinken</option>
           </select>
           <label htmlFor={`text-${id}`}>Beitrag</label>
           <input
