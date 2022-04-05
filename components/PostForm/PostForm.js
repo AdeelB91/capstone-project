@@ -6,11 +6,16 @@ export function PostForm({
   submitText,
   error,
   defaultValue,
+  defaultcategory,
   id,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
-    onSubmitPost(event.target.elements.text.value, event.target);
+    onSubmitPost(
+      event.target[select.selectedIndex].id,
+      event.target.elements.text.value,
+      event.target
+    );
   }
 
   return (
@@ -18,6 +23,21 @@ export function PostForm({
       <PageTitle>Beitrag erstellen</PageTitle>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
+          <label htmlFor={`category-${id}`}>Choose a Category:</label>
+          <select
+            id={`category-${id}`}
+            name="category"
+            type="text"
+            form="true"
+            defaultcategory={defaultcategory}
+          >
+            <option value="Filme">Filme</option>
+            <option value="Serien">Serien</option>
+            <option value="Bücher">Bücher</option>
+            <option value="Podcasts">Podcasts</option>
+            <option value="Essen">Essen</option>
+            <option value="Trinken">Trinken</option>
+          </select>
           <label htmlFor={`text-${id}`}>Beitrag</label>
           <input
             type="text"
