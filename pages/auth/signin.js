@@ -78,8 +78,8 @@ const LogInButton = styled.button`
 
 export async function getServerSideProps(context) {
   const providers = await getProviders();
-  const session = await getSession(context);
+  const session = await getSession();
   return {
-    props: { providers, session },
+    props: { providers },
   };
 }
