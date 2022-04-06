@@ -22,6 +22,7 @@ export function Post({ post }) {
     return (
       <Container>
         <PostForm
+          defaultcategory={post.category}
           defaultValue={post.text}
           onSubmitPost={handleEdit}
           disabled={isUpdating}
@@ -61,6 +62,7 @@ export function Post({ post }) {
             </Buttons>
           ) : null}
         </Info>
+        <p>{post.category}</p>
         <q>{post.text}</q>
         {post.createdAt ? (
           <TimeStamp>

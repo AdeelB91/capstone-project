@@ -15,8 +15,10 @@ export default function Profile() {
           <h1>Profile</h1>
           <ProfileInfo>
             <img alt="profilepic" src={session.user.image} />
-            <p>{session.user.name}</p>
-            <p>{session.user.email}</p>
+            <Info>
+              <h2>{session.user.name}</h2>
+              <p>{session.user.email}</p>
+            </Info>
           </ProfileInfo>
         </ProfileHead>
         {/* test */}
@@ -39,10 +41,22 @@ const ProfileInfo = styled.div`
   align-items: center;
   gap: 1vh;
   > img {
-    width: 39px;
-    border-radius: 15px;
+    width: 50px;
+    border-radius: 30px;
   }
 `;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  > h2 {
+    font-size: medium;
+  }
+  p {
+    font-size: small;
+  }
+`;
+
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export function PostForm({
@@ -6,11 +7,20 @@ export function PostForm({
   submitText,
   error,
   defaultValue,
+  defaultcategory,
   id,
 }) {
+  function handleChange(event) {
+    defaultcategory = event.target.value;
+  }
   function handleSubmit(event) {
     event.preventDefault();
-    onSubmitPost(event.target.elements.text.value, event.target);
+    onSubmitPost(
+      defaultcategory,
+      event.target.elements.text.value,
+      event.target
+    );
+    console.log(defaultcategory);
   }
 
   return (
@@ -18,6 +28,20 @@ export function PostForm({
       <PageTitle>Beitrag erstellen</PageTitle>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
+          <label htmlFor={`category-${id}`}>Choose a Category:</label>
+          <select
+            onChange={handleChange}
+            id={`category-${id}`}
+            name="category"
+            type="text"
+            form="true"
+            defaultcategory={defaultcategory}
+          >
+            <option value="Filme">Filme</option>
+            <option value="Serien"> Serien</option>
+            <option value="Bücher">Bücher</option>
+            <option value="Podcasts">Podcasts</option>
+          </select>
           <label htmlFor={`text-${id}`}>Beitrag</label>
           <input
             type="text"
