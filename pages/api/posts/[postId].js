@@ -12,7 +12,6 @@ export default async function handler(request, response) {
 
     switch (request.method) {
       case "PATCH":
-        // patch the correct joke
         const updatedPost = await Post.findByIdAndUpdate(
           postId,
           {

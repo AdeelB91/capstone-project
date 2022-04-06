@@ -56,6 +56,7 @@ const Info = styled.div`
     font-size: small;
   }
 `;
+
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
