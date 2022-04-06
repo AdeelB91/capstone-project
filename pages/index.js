@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import LoginButton from "../components/LogInButton/LogInButton";
+import LoginButton from "../components/LogInButton/LogInButton.js";
 import { getSession } from "next-auth/react";
 import Image from "next/image";
 

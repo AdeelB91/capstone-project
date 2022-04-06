@@ -2,8 +2,9 @@ import { getSession, useSession } from "next-auth/react";
 import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
-import LoginButton from "../components/LogInButton/LogInButton";
+import LoginButton from "../components/LogInButton/LogInButton.js";
 import styled from "styled-components";
+
 export default function Profile() {
   const { data: session } = useSession();
 
