@@ -42,7 +42,7 @@ const ProfileInfo = styled.div`
   gap: 1vh;
   > img {
     width: 50px;
-    border-radius: 30px;
+    border-radius: 35px;
   }
 `;
 
