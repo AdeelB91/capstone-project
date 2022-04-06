@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -38,7 +39,7 @@ export function Post({ post }) {
         <Info>
           <ProfilePart>
             {post.userId?.image ? (
-              <img alt="profilepic" src={post.userId.image} />
+              <Image alt="profilepic" src={post.userId.image} />
             ) : null}
             {post.userId?.name ? <div> {post.userId.name}</div> : null}
           </ProfilePart>

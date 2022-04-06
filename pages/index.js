@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import LogInButton from "../components/LogInButton/LogInButton.js";
+import LoginButton from "../components/LoginButton/LoginButton.js";
 import { getSession } from "next-auth/react";
 import Image from "next/image";
 
@@ -17,7 +17,7 @@ export default function Home() {
           height={190}
           width={170}
         />
-        <LogInButton />
+        <LoginButton />
       </Landingpage>
     </>
   );

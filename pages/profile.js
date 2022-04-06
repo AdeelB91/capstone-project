@@ -2,8 +2,9 @@ import { getSession, useSession } from "next-auth/react";
 import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
-import LogInButton from "../components/LogInButton/LogInButton.js";
+import LoginButton from "../components/LoginButton/LoginButton.js";
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ export default function Profile() {
         <ProfileHead>
           <h1>Profile</h1>
           <ProfileInfo>
-            <img alt="profilepic" src={session.user.image} />
+            <Image alt="profilepic" src={session.user.image} />
             <Info>
               <h2>{session.user.name}</h2>
               <p>{session.user.email}</p>
@@ -24,7 +25,7 @@ export default function Profile() {
         </ProfileHead>
         {/* test */}
         <PostList />
-        <LogInButton />
+        <LoginButton />
       </main>
       <Navigation />
     </>
