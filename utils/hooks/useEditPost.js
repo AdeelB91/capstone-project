@@ -8,12 +8,12 @@ export function useEditPost(post) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState();
 
-  async function handleEdit(newText) {
+  async function handleEdit(newCategory, newText) {
     setIsUpdating(true);
     const response = await fetch(`/api/posts/${post._id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ text: newText }),
+      body: JSON.stringify({ category: newCategory, text: newText }),
     });
     const updatedPost = await response.json();
     if (response.ok) {
