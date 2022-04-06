@@ -23,6 +23,7 @@ export default function LoginButton() {
 
 const LoginContainer = styled.div`
   margin-bottom: 15vh;
+  align-items: center;
 `;
 const SignButton = styled.button`
   width: fit-content;

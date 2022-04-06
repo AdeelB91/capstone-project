@@ -25,13 +25,19 @@ export default function Profile() {
         </ProfileHead>
         {/* test */}
         <PostList />
-        <LoginButton />
+        <SignOutButton>
+          <LoginButton />
+        </SignOutButton>
       </main>
       <Navigation />
     </>
   );
 }
 
+const SignOutButton = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 const ProfileHead = styled.div`
   display: flex;
   align-items: center;
