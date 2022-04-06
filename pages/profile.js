@@ -16,7 +16,7 @@ export default function Profile() {
         <ProfileHead>
           <h1>Profile</h1>
           <ProfileInfo>
-            <Image alt="profilepic" src={session.user.image} />
+            <img alt="profilepic" src={session.user.image} />
             <Info>
               <h2>{session.user.name}</h2>
               <p>{session.user.email}</p>

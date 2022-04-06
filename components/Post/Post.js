@@ -39,7 +39,7 @@ export function Post({ post }) {
         <Info>
           <ProfilePart>
             {post.userId?.image ? (
-              <Image alt="profilepic" src={post.userId.image} />
+              <img alt="profilepic" src={post.userId.image} />
             ) : null}
             {post.userId?.name ? <div> {post.userId.name}</div> : null}
           </ProfilePart>
