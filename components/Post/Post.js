@@ -3,11 +3,7 @@ import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
-import react from "react";
-import reactStars from "react-stars";
-import ReactStars from "react-stars";
-import Rate from "../Rate/Rate";
-
+import StarRating from "../StarRating/StarRating";
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
   timeStyle: "short",
@@ -68,7 +64,7 @@ export function Post({ post }) {
         </Info>
         <p>{post.category}</p>
         <q>{post.text}</q>
-        <Rate />
+        <StarRating />
         {post.createdAt ? (
           <TimeStamp>
             {dateFormatter.format(new Date(post.createdAt))}
