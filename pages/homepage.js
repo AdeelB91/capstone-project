@@ -5,8 +5,12 @@ import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import Categories from "../components/Categories/Categories";
+import useSWR from "swr";
+import { useState } from "react";
 
-export default function HomePage() {
+export default function HomePage(type) {
+  const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
+
   return (
     <>
       <Head>
@@ -15,7 +19,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Categories />
-        <PostList type="feed" />
+        <PostList posts={posts.data} type="feed" />
       </main>
       <Navigation />
     </>

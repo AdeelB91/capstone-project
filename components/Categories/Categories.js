@@ -1,38 +1,19 @@
-import useSWR from "swr";
 import styled from "styled-components";
+import { categories } from "../../categories";
 
-export default function Categories() {
-  const categories = useSWR("/api/categories");
+export default function Categories({ posts }) {
+  function handleFilter() {
+    console.log(posts);
+    posts.filter((post) => post.category === "Bücher");
+  }
 
   return (
     <>
-      {categories.data && Array.isArray(categories.data) ? (
-        categories.data.length > 0 ? (
-          <Ul>
-            {categories.data.map((category, index) => (
-              <li key={category}>
-                <div index={index} />
-              </li>
-            ))}
-          </Ul>
-        ) : (
-          <div>No categories yet 🤷‍♂️</div>
-        )
-      ) : (
-        <div>Loading…</div>
-      )}
+      {categories.map((category) => (
+        <button onClick={handleFilter} key={category.id}>
+          {category.name}
+        </button>
+      ))}
     </>
   );
 }
-
-const Ul = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3vh;
-  padding: 0;
-  > li {
-    flex: 1 0 30ch;
-  }
-`;

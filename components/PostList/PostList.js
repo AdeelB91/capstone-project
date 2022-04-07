@@ -10,9 +10,9 @@ export default function PostList({ type }) {
       {posts.data && Array.isArray(posts.data) ? (
         posts.data.length > 0 ? (
           <Ul>
-            {posts.data.map((post) => (
+            {posts.data.map((...post) => (
               <li key={post._id}>
-                <Post post={post} />
+                <Post post={post.data} />
               </li>
             ))}
           </Ul>
