@@ -14,7 +14,7 @@ export default function HomePage() {
       </Head>
       <Header />
       <main>
-        <Categories />
+        {/* <Categories /> */}
         <PostList type="feed" />
       </main>
       <Navigation />
