@@ -4,6 +4,7 @@ import { getSession } from "next-auth/react";
 import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
+import Categories from "../components/Categories/Categories";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       </Head>
       <Header />
       <main>
+        <Categories />
         <PostList type="feed" />
       </main>
       <Navigation />
