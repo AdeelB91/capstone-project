@@ -2,9 +2,11 @@ import useSWR from "swr";
 import { Post } from "../Post/Post";
 import styled from "styled-components";
 import { categories } from "../../categories";
+import { useState } from "react";
 
 export default function PostList({ type }) {
   const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
+  const [filterList, setFilterList] = useState();
 
   function handleFilter(category) {
     //console.log(data);
@@ -12,12 +14,15 @@ export default function PostList({ type }) {
     const filterposts = posts.data.filter((post) => post.category === category);
     console.log(filterposts);
 
-    // setFilterList(filterposts);
     // data.filter((data.category) => data.category === "Bücher" ).map()
   }
 
   return (
     <>
+      {/* {filterposts.map((filteredpost, index) => (
+        <Post key={index} filteredpost={filteredpost} />
+      ))} */}
+
       <CategoryBar>
         {categories.map((category) => (
           <button onClick={() => handleFilter(category.name)} key={category.id}>
@@ -25,6 +30,35 @@ export default function PostList({ type }) {
           </button>
         ))}
       </CategoryBar>
+      {/* <Ul>
+        {filterposts.map((onepost) => (
+          <li key={onepost.id}>
+            <Post onepost={onepost} />
+          </li>
+        ))}
+      </Ul> */}
+
+      {/* {categories.map((category) => (
+        <button
+          key={category.id}
+          onClick={() =>
+            posts.data.filter(
+              (post) =>
+                post.category ===
+                category?.map(categorypost)(
+                  <Ul>
+                    <li key={categorypost.id}>
+                      <Post categorypost={categorypost} />
+                    </li>
+                  </Ul>
+                )
+            )
+          }
+        >
+          {category.name}
+        </button>
+      ))} */}
+
       {posts.data && Array.isArray(posts.data) ? (
         posts.data.length > 0 ? (
           <Ul>
