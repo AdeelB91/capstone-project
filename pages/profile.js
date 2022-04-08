@@ -5,9 +5,11 @@ import PostList from "../components/PostList/PostList";
 import LoginButton from "../components/LoginButton/LoginButton.js";
 import styled from "styled-components";
 import Image from "next/image";
+import useSWR from "swr";
 
 export default function Profile() {
   const { data: session } = useSession();
+  console.log();
 
   return (
     <>

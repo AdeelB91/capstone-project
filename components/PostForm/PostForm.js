@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { categories } from "../../categories";
 
 export function PostForm({
   onSubmitPost,
@@ -37,10 +38,11 @@ export function PostForm({
             form="true"
             defaultcategory={defaultcategory}
           >
-            <option value="Filme">Filme</option>
-            <option value="Serien"> Serien</option>
-            <option value="Bücher">Bücher</option>
-            <option value="Podcasts">Podcasts</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
           </select>
           <label htmlFor={`text-${id}`}>Beitrag</label>
           <input

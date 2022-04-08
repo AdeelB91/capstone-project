@@ -13,6 +13,7 @@ export default function HomePage() {
       </Head>
       <Header />
       <main>
+        {/* <Categories /> */}
         <PostList type="feed" />
       </main>
       <Navigation />

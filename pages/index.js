@@ -1,10 +1,19 @@
 import Head from "next/head";
 import styled from "styled-components";
 import LoginButton from "../components/LoginButton/LoginButton.js";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (session) {
+      router.push("/homepage");
+    }
+  }, [session, router]);
   return (
     <>
       <Head>
