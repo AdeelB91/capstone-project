@@ -6,15 +6,16 @@ import { useState } from "react";
 
 export default function PostList({ type }) {
   const [categoryFilter, setCategoryFilter] = useState();
-  // const [active, setActive] = useState();
+  // const [active, setActive] = useState(false);
 
   const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
   const filteredPosts = categoryFilter
     ? posts.data?.filter((post) => post.category === categoryFilter)
     : posts.data;
-  function handleClick(category, event) {
+  function handleClick(category) {
     setCategoryFilter(category);
-    //  setActive(true);
+    // setActive(true);
+    // console.log();
   }
 
   function handleShowAll() {
@@ -28,7 +29,7 @@ export default function PostList({ type }) {
         <CategoryBar>
           {categories.map((category) => (
             <CategoryButton
-              //  className={active === category.id ? "active" : ""}
+              //           className={active === true ? "active" : ""}
               onClick={() => handleClick(category.name)}
               key={category.id}
               id={category.id}
