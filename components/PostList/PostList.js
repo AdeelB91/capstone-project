@@ -5,64 +5,46 @@ import { categories } from "../../categories";
 import { useState } from "react";
 
 export default function PostList({ type }) {
+  const [categoryFilter, setCategoryFilter] = useState();
+  // const [active, setActive] = useState();
+
   const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
-  const [filterList, setFilterList] = useState();
-
-  function handleFilter(category) {
-    //console.log(data);
-
-    const filterposts = posts.data.filter((post) => post.category === category);
-    console.log(filterposts);
-
-    // data.filter((data.category) => data.category === "Bücher" ).map()
+  const filteredPosts = categoryFilter
+    ? posts.data?.filter((post) => post.category === categoryFilter)
+    : posts.data;
+  function handleClick(category, event) {
+    setCategoryFilter(category);
+    //  setActive(true);
   }
+
+  function handleShowAll() {
+    setCategoryFilter(undefined);
+  }
+  console.log(categoryFilter);
 
   return (
     <>
-      {/* {filterposts.map((filteredpost, index) => (
-        <Post key={index} filteredpost={filteredpost} />
-      ))} */}
-
-      <CategoryBar>
-        {categories.map((category) => (
-          <button onClick={() => handleFilter(category.name)} key={category.id}>
-            {category.name}
-          </button>
-        ))}
-      </CategoryBar>
-      {/* <Ul>
-        {filterposts.map((onepost) => (
-          <li key={onepost.id}>
-            <Post onepost={onepost} />
-          </li>
-        ))}
-      </Ul> */}
-
-      {/* {categories.map((category) => (
-        <button
-          key={category.id}
-          onClick={() =>
-            posts.data.filter(
-              (post) =>
-                post.category ===
-                category?.map(categorypost)(
-                  <Ul>
-                    <li key={categorypost.id}>
-                      <Post categorypost={categorypost} />
-                    </li>
-                  </Ul>
-                )
-            )
-          }
-        >
-          {category.name}
-        </button>
-      ))} */}
-
-      {posts.data && Array.isArray(posts.data) ? (
-        posts.data.length > 0 ? (
+      <CategoryContainer>
+        <CategoryBar>
+          {categories.map((category) => (
+            <CategoryButton
+              //  className={active === category.id ? "active" : ""}
+              onClick={() => handleClick(category.name)}
+              key={category.id}
+              id={category.id}
+            >
+              {category.name}
+            </CategoryButton>
+          ))}
+        </CategoryBar>
+        <div>
+          <CategoryButton onClick={handleShowAll}>Show all</CategoryButton>
+        </div>
+      </CategoryContainer>
+      {filteredPosts && Array.isArray(filteredPosts) ? (
+        filteredPosts.length > 0 ? (
           <Ul>
-            {posts.data.map((post) => (
+            {filteredPosts.map((post) => (
               <li key={post._id}>
                 <Post post={post} />
               </li>
@@ -90,30 +72,40 @@ const Ul = styled.ul`
   }
 `;
 
-const CategoryBar = styled.div`
+const CategoryContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 5vh;
+  align-items: center;
+  flex-direction: column;
+  padding: 1vh;
   margin: 2vh 0;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  > button {
-    width: fit-content;
-    background-color: white;
-    border: none;
-    border-bottom: 1px solid;
-    padding: 1px;
-    cursor: pointer;
+  > div {
+    margin-top: 2vh;
+  }
+`;
 
-    &:hover {
-      background-color: lightblue;
-    }
-    &:active {
-      background-color: lightblue;
-      border: 1px solid black;
-      padding: 2px;
-      font-size: medium;
-    }
+const CategoryBar = styled.div`
+  display: flex;
+  gap: 5vh;
+`;
+
+const CategoryButton = styled.button`
+  width: fit-content;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid;
+  padding: 1px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightblue;
+  }
+  &.active {
+    background-color: lightblue;
+    border: 1px solid black;
+    padding: 2px;
+    font-size: medium;
   }
 `;
