@@ -27,7 +27,7 @@ const LoginContainer = styled.div`
 `;
 const SignButton = styled.button`
   width: fit-content;
-  font-size: 2vh;
+  font-size: 2.1vh;
   border-radius: 1rem;
   color: #0b2b40;
   background-color: white;
