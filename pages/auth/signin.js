@@ -64,6 +64,7 @@ const LogInButton = styled.button`
   display: flex;
   align-items: center;
   gap: 1.5vh;
+  cursor: pointer;
 `;
 
 export async function getServerSideProps(context) {

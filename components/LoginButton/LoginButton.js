@@ -32,4 +32,5 @@ const SignButton = styled.button`
   color: #0b2b40;
   background-color: white;
   padding: 1vh;
+  cursor: pointer;
 `;
