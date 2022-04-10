@@ -13,7 +13,7 @@ export default function Navigation() {
           <IconLink className={router.pathname == "/homepage" ? "active" : ""}>
             <Image
               alt="homeicon"
-              src="/SVG/home_white_24dp.svg"
+              src="/SVG/home_black_24dp (1).svg"
               width={40}
               height={40}
             />
@@ -23,7 +23,7 @@ export default function Navigation() {
           <IconLink className={router.pathname == "/create" ? "active" : ""}>
             <Image
               alt="addPostIcon"
-              src="/SVG/add_circle_white_24dp.svg"
+              src="/SVG/add_circle_black_24dp.svg"
               width={38}
               height={38}
             />
@@ -33,7 +33,7 @@ export default function Navigation() {
           <IconLink className={router.pathname == "/profile" ? "active" : ""}>
             <Image
               alt="profileIcon"
-              src="/SVG/person_white_24dp.svg"
+              src="/SVG/person_black_24dp.svg"
               width={40}
               height={40}
             />
@@ -51,8 +51,10 @@ const Nav = styled.div`
   bottom: 0;
   width: 100%;
   background-color: #0b2b40;
-  padding: 10px;
-  height: 8vh;
+  background-color: white;
+  padding: 8px;
+  height: 6vh;
+  border-top: ridge 3px pink;
 `;
 
 const IconLink = styled.a`

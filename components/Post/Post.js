@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
+import { AiOutlineStar, AiOutlineEdit, AiFillStar } from "react-icons/ai";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -36,17 +37,18 @@ export function Post({ post }) {
   } else {
     return (
       <Container>
-        <Info>
+        <PostHead>
           <ProfilePart>
             {post.userId?.image ? (
               <img alt="profilepic" src={post.userId.image} />
             ) : null}
-            {post.userId?.name ? <div> {post.userId.name}</div> : null}
+            {post.userId?.name ? <p> {post.userId.name}</p> : null}
           </ProfilePart>
           {isOwnPost ? (
             <Buttons>
-              <button onClick={activateEditMode}>Edit</button>
-              <button
+              <AiOutlineEdit size={21} onClick={activateEditMode} />
+              <RiDeleteBin2Line
+                size={20}
                 onClick={() => {
                   if (
                     confirm(
@@ -57,51 +59,48 @@ export function Post({ post }) {
                   }
                 }}
                 disabled={isDeleting}
-              >
-                Delete
-              </button>
+              />
             </Buttons>
           ) : null}
-        </Info>
-        <p>{post.category}</p>
-        <q>{post.text}</q>
-        {post.createdAt ? (
-          <TimeStamp>
-            {dateFormatter.format(new Date(post.createdAt))}
-          </TimeStamp>
-        ) : null}
+        </PostHead>
+        <h4>{post.category}</h4>
+        <p>{post.text}</p>
+        <PostFoot>
+          <AiOutlineStar size={22} />
+          {post.createdAt ? (
+            <TimeStamp>
+              {dateFormatter.format(new Date(post.createdAt))}
+            </TimeStamp>
+          ) : null}
+        </PostFoot>
       </Container>
     );
   }
 }
 
 export const Container = styled.article`
-  padding: 1rem 1rem 0.75rem 1rem;
+  background-color: white;
+  padding: 0.3rem 0.75rem 0.5rem 1rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3vh;
+  gap: 2.5vh;
   margin-top: 1vh;
   > form {
     height: 100%;
   }
-  q {
-    margin: 2vh;
+  p {
+    font-size: 18px;
   }
   img {
-    width: 30px;
-    border-radius: 15px;
+    width: 33px;
+    border-radius: 20px;
   }
 `;
-const TimeStamp = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  font-size: 1.3vh;
-`;
 
-const Info = styled.div`
+const PostHead = styled.div`
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -110,21 +109,35 @@ const Info = styled.div`
   flex-wrap: wrap;
 `;
 
+const PostFoot = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1vh;
+`;
+
+const TimeStamp = styled.div`
+  font-size: 1.5vh;
+`;
+
 const Buttons = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   > button {
     flex: 1 0 auto;
     font-size: 10px;
-    background-color: #0b2b40;
-    color: white;
+    background-color: white;
     padding: 2px;
+    border: solid #0b2b40 1px;
   }
 `;
 
 const ProfilePart = styled.div`
   top: 5px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 5px;
+
+  > p {
+    font-size: small;
+  }
 `;

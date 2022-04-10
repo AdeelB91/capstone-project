@@ -1,21 +1,32 @@
 import styled from "styled-components";
+import { GoSignOut } from "react-icons/go";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Header() {
+  const { data: session } = useSession();
+
   return (
     <AppHeader>
       <AppTitle>App-Title</AppTitle>
+      <GoSignOut
+        onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+        color="black"
+        size={25}
+      />
     </AppHeader>
   );
 }
 
 const AppHeader = styled.header`
-  background-color: #0b2b40;
-  height: 8vh;
+  background-color: white;
+  height: 7.5vh;
   display: flex;
-  align-items: center;
-  padding: 1vh;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.8vh;
+  border-bottom: solid 2px;
 `;
 
 const AppTitle = styled.h1`
-  color: white;
+  margin-top: 1vh;
 `;

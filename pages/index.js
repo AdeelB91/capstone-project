@@ -20,12 +20,12 @@ export default function Home() {
         <title>Log In</title>
       </Head>
       <Landingpage>
-        <Image
+        {/* <Image
           alt="App-Logo"
           src="/SVG/iwwa_lightbulb.svg"
           height={190}
           width={170}
-        />
+        /> */}
         <LoginButton />
       </Landingpage>
     </>
@@ -36,8 +36,11 @@ const Landingpage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15vh;
-  background: linear-gradient(180deg, #000000 0%, #809ab1 26.04%, #044179 100%);
+  margin-top: 18vh;
+  padding-top: 40vh;
+  background-image: url("/SVG/Vector 7.svg");
+  background-size: 100%;
+  background-repeat: space;
   height: 100vh;
 `;
 
