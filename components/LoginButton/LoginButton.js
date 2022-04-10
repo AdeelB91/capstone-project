@@ -33,4 +33,5 @@ const SignButton = styled.button`
   background-color: white;
   padding: 1vh;
   cursor: pointer;
+  border: solid black 2px;
 `;
