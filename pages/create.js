@@ -3,13 +3,14 @@ import { PostForm } from "../components/PostForm/PostForm";
 import Navigation from "../components/Navigation/Navigation";
 import { useCreatePost } from "../utils/hooks/useCreatedPost";
 import Header from "../components/Header/Header";
-
+import styled from "styled-components";
 export default function CreatePage() {
   const { handleCreate, isCreating, error } = useCreatePost();
   return (
     <>
       <Header />
       <main>
+        <PageTitle>Beitrag erstellen</PageTitle>
         <PostForm
           onSubmitPost={handleCreate}
           disabled={isCreating}
@@ -17,12 +18,24 @@ export default function CreatePage() {
           error={error}
           id="create"
         />
+        <Breaker />
       </main>
       <Navigation />
     </>
   );
 }
 
+const PageTitle = styled.h1`
+  display: flex;
+  justify-content: center;
+  margin-top: 20vh;
+  font-size: 24px;
+  margin-bottom: 1vh;
+`;
+
+const Breaker = styled.div`
+  margin-top: 30vh;
+`;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   if (!session) {

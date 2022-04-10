@@ -77,13 +77,14 @@ const CategoryContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 1vh;
-  margin: 2vh 0;
+  padding: 0.5vh;
+  margin: 4vh 0;
+  background-color: white;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   > div {
-    margin-top: 2vh;
+    margin: 2vh 0 1vh 0;
   }
 `;
 
@@ -100,7 +101,7 @@ const CategoryButton = styled.button`
   padding: 1px;
   cursor: pointer;
 
-  &:hover {
+  &.hover {
     background-color: lightblue;
   }
   &.active {

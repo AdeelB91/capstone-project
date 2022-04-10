@@ -21,13 +21,6 @@ export default function HomePage() {
   );
 }
 
-const AppHeader = styled.header`
-  background-color: darkblue;
-  height: 100px;
-  display: flex;
-  align-items: center;
-`;
-
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 

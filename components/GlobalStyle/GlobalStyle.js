@@ -11,9 +11,17 @@ export const GlobalStyle = createGlobalStyle`
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     margin: 0;
     padding: 0;
+
+
   }
   main {
     padding: 2vh;
-    margin-bottom: 8vh;
+    margin-bottom: 5vh;
+    background-image: url("/SVG/Vector 7.svg");
+    background-size: 100%;
+    background-repeat: space;
+    background-position: center;
+    height: 100%;
+
   }
 `;

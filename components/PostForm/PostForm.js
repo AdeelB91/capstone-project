@@ -26,7 +26,6 @@ export function PostForm({
 
   return (
     <>
-      <PageTitle>Beitrag erstellen</PageTitle>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
           <label htmlFor={`category-${id}`}>Choose a Category:</label>
@@ -64,15 +63,9 @@ export function PostForm({
   );
 }
 
-const PageTitle = styled.h1`
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  font-size: 22px;
-  margin-bottom: 10px;
-`;
-
 const Post = styled.form`
+  background-color: white;
+  margin-bottom: 0;
   > div {
     gap: 15px;
     display: flex;
