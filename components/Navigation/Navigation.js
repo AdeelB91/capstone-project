@@ -13,7 +13,7 @@ export default function Navigation() {
           <IconLink className={router.pathname == "/homepage" ? "active" : ""}>
             <Image
               alt="homeicon"
-              src="/SVG/home_black_24dp (1).svg"
+              src="/SVG/home_black_24dp.svg"
               width={40}
               height={40}
             />

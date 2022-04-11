@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
-import { AiOutlineStar, AiOutlineEdit, AiFillStar } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import StarRating from "../StarRating/StarRating";
+import { useState } from "react";
+import useSWR from "swr";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -15,11 +18,26 @@ export function Post({ post }) {
   const { activateEditMode, error, handleEdit, isEditMode, isUpdating } =
     useEditPost(post);
 
+  const posts = useSWR("/api/posts");
+
   const { handleDelete, isDeleting } = useDeletePost(post);
 
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
 
+  const [active, setActive] = useState(false);
+  const [like, setLike] = useState(0);
+
+  const handleChangeActive = () => {
+    setActive((previousStar) => {
+      return !previousStar;
+    });
+  };
+
+  function handleClick() {
+    setLike({ count: like + 1 });
+    console.log(like);
+  }
   if (isEditMode) {
     return (
       <Container>
@@ -66,7 +84,15 @@ export function Post({ post }) {
         <h4>{post.category}</h4>
         <p>{post.text}</p>
         <PostFoot>
-          <AiOutlineStar size={22} />
+          <p>
+            <StarRating
+              id={post.id}
+              active={active}
+              handleChangeActive={handleChangeActive}
+              onClick={handleClick}
+            />
+            {like} Stars
+          </p>
           {post.createdAt ? (
             <TimeStamp>
               {dateFormatter.format(new Date(post.createdAt))}
@@ -113,6 +139,10 @@ const PostFoot = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1vh;
+
+  > p {
+    font-size: small;
+  }
 `;
 
 const TimeStamp = styled.div`
