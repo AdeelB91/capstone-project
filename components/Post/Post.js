@@ -3,8 +3,12 @@ import styled from "styled-components";
 import { useEditPost } from "../../utils/hooks/useEditPost";
 import { useDeletePost } from "../../utils/hooks/useDeletePost";
 import { useSession } from "next-auth/react";
-import { AiOutlineStar, AiOutlineEdit, AiFillStar } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import StarRating from "../StarRating/StarRating";
+import { useState } from "react";
+import useSWR from "swr";
+import { useLikePost } from "../../utils/hooks/useLikePost";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -14,11 +18,15 @@ const dateFormatter = Intl.DateTimeFormat("en", {
 export function Post({ post }) {
   const { activateEditMode, error, handleEdit, isEditMode, isUpdating } =
     useEditPost(post);
+  const { handleLike } = useLikePost(post._id);
+
+  const posts = useSWR("/api/posts");
 
   const { handleDelete, isDeleting } = useDeletePost(post);
 
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
+  const isLiked = post.likes.includes(session?.user?.id);
 
   if (isEditMode) {
     return (
@@ -66,7 +74,16 @@ export function Post({ post }) {
         <h4>{post.category}</h4>
         <p>{post.text}</p>
         <PostFoot>
-          <AiOutlineStar size={22} />
+          <LikeContainer>
+            <StarRating
+              id={post.id}
+              active={isLiked}
+              handleChangeActive={handleLike}
+            />
+            <p>
+              {post.likes.length} {post.likes.length === 1 ? "Star" : "Stars"}
+            </p>
+          </LikeContainer>
           {post.createdAt ? (
             <TimeStamp>
               {dateFormatter.format(new Date(post.createdAt))}
@@ -113,8 +130,23 @@ const PostFoot = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1vh;
+
+  > p {
+    font-size: small;
+  }
 `;
 
+const LikeContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 0.1rem;
+
+  > p {
+    font-size: 11px;
+    color: grey;
+    padding-bottom: 0.1rem;
+  }
+`;
 const TimeStamp = styled.div`
   font-size: 1.5vh;
 `;
