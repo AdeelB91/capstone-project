@@ -34,7 +34,7 @@ export default async function handler(request, response) {
             [updateOperation]: { likes: session.user.id },
           },
           { returnDocument: "after", runValidators: true }
-        ).where({ userId: session.user.id });
+        );
 
         if (updatedPost) {
           response.status(200).json({
