@@ -8,6 +8,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import StarRating from "../StarRating/StarRating";
 import { useState } from "react";
 import useSWR from "swr";
+import { useLikePost } from "../../utils/hooks/useLikePost";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -17,6 +18,7 @@ const dateFormatter = Intl.DateTimeFormat("en", {
 export function Post({ post }) {
   const { activateEditMode, error, handleEdit, isEditMode, isUpdating } =
     useEditPost(post);
+  const { handleLike } = useLikePost(post._id);
 
   const posts = useSWR("/api/posts");
 
@@ -24,20 +26,8 @@ export function Post({ post }) {
 
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
+  const isLiked = post.likes.includes(session?.user?.id);
 
-  const [active, setActive] = useState(false);
-  const [like, setLike] = useState(0);
-
-  const handleChangeActive = () => {
-    setActive((previousStar) => {
-      return !previousStar;
-    });
-  };
-
-  function handleClick() {
-    setLike({ count: like + 1 });
-    console.log(like);
-  }
   if (isEditMode) {
     return (
       <Container>
@@ -84,15 +74,16 @@ export function Post({ post }) {
         <h4>{post.category}</h4>
         <p>{post.text}</p>
         <PostFoot>
-          <p>
+          <LikeContainer>
             <StarRating
               id={post.id}
-              active={active}
-              handleChangeActive={handleChangeActive}
-              onClick={handleClick}
+              active={isLiked}
+              handleChangeActive={handleLike}
             />
-            {like} Stars
-          </p>
+            <p>
+              {post.likes.length} {post.likes.length === 1 ? "Star" : "Stars"}
+            </p>
+          </LikeContainer>
           {post.createdAt ? (
             <TimeStamp>
               {dateFormatter.format(new Date(post.createdAt))}
@@ -145,6 +136,17 @@ const PostFoot = styled.div`
   }
 `;
 
+const LikeContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 0.1rem;
+
+  > p {
+    font-size: 11px;
+    color: grey;
+    padding-bottom: 0.1rem;
+  }
+`;
 const TimeStamp = styled.div`
   font-size: 1.5vh;
 `;

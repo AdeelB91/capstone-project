@@ -5,16 +5,12 @@ export default function StarRating({ active, handleChangeActive }) {
     <>
       {active ? (
         <AiFillStar
-          className="active"
+          fill={"orange"}
           size={22}
           onClick={() => handleChangeActive()}
         />
       ) : (
-        <AiOutlineStar
-          className="inactive"
-          size={22}
-          onClick={() => handleChangeActive()}
-        />
+        <AiOutlineStar size={22} onClick={() => handleChangeActive()} />
       )}
     </>
   );
