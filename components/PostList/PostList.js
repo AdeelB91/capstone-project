@@ -39,7 +39,9 @@ export default function PostList({ type }) {
           ))}
         </CategoryBar>
         <div>
-          <CategoryButton onClick={handleShowAll}>Show all</CategoryButton>
+          <CategoryButton onClick={handleShowAll}>
+            Alle Empfehlungen
+          </CategoryButton>
         </div>
       </CategoryContainer>
       {filteredPosts && Array.isArray(filteredPosts) ? (
@@ -65,11 +67,11 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3vh;
-  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1vh;
   > li {
-    flex: 1 0 30ch;
+    padding: 1vh;
   }
 `;
 

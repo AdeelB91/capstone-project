@@ -10,11 +10,11 @@ export default function CreatePage() {
     <>
       <Header />
       <main>
-        <PageTitle>Beitrag erstellen</PageTitle>
+        <PageTitle>Teile deine Empfehlungen</PageTitle>
         <PostForm
           onSubmitPost={handleCreate}
           disabled={isCreating}
-          submitText={isCreating ? "Creating post…" : "Create post"}
+          submitText={isCreating ? "Beitrag wird erstellt..." : "Erstellen"}
           error={error}
           id="create"
         />

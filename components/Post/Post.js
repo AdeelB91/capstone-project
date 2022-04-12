@@ -71,8 +71,10 @@ export function Post({ post }) {
             </Buttons>
           ) : null}
         </PostHead>
-        <h4>{post.category}</h4>
-        <p>{post.text}</p>
+        <PostMain>
+          <h4>{post.category}</h4>
+          <p>{post.text}</p>
+        </PostMain>
         <PostFoot>
           <LikeContainer>
             <StarRating
@@ -85,9 +87,7 @@ export function Post({ post }) {
             </p>
           </LikeContainer>
           {post.createdAt ? (
-            <TimeStamp>
-              {dateFormatter.format(new Date(post.createdAt))}
-            </TimeStamp>
+            <p>{dateFormatter.format(new Date(post.createdAt))}</p>
           ) : null}
         </PostFoot>
       </Container>
@@ -97,7 +97,7 @@ export function Post({ post }) {
 
 export const Container = styled.article`
   background-color: white;
-  padding: 0.3rem 0.75rem 0.5rem 1rem;
+  padding: 1rem 1rem 0.7rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   height: 100%;
@@ -107,9 +107,6 @@ export const Container = styled.article`
   margin-top: 1vh;
   > form {
     height: 100%;
-  }
-  p {
-    font-size: 18px;
   }
   img {
     width: 33px;
@@ -132,23 +129,28 @@ const PostFoot = styled.div`
   margin-top: 1vh;
 
   > p {
-    font-size: small;
+    font-size: 0.7rem;
   }
+`;
+
+const PostMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  margin: 0.5vh 1.3vh;
 `;
 
 const LikeContainer = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 0.1rem;
+  margin-bottom: 0.5vh;
 
   > p {
     font-size: 11px;
     color: grey;
     padding-bottom: 0.1rem;
   }
-`;
-const TimeStamp = styled.div`
-  font-size: 1.5vh;
 `;
 
 const Buttons = styled.div`

@@ -28,7 +28,7 @@ export function PostForm({
     <>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor={`category-${id}`}>Choose a Category:</label>
+          <label htmlFor={`category-${id}`}>Kategorie:</label>
           <select
             onChange={handleChange}
             id={`category-${id}`}
@@ -37,6 +37,7 @@ export function PostForm({
             form="true"
             defaultcategory={defaultcategory}
           >
+            <option value="">Kategorie auswählen</option>
             {categories.map((category) => (
               <option key={category.id} value={category.name}>
                 {category.name}
@@ -56,7 +57,9 @@ export function PostForm({
               <strong>Error:</strong> {error}
             </p>
           ) : null}{" "}
-          <input type="submit" value={submitText} disabled={disabled} />
+          <CreateButton>
+            <input type="submit" value={submitText} disabled={disabled} />
+          </CreateButton>
         </div>
       </Post>
     </>
@@ -87,10 +90,16 @@ const Post = styled.form`
     border-radius: 3px;
   }
   input[type="submit"] {
-    margin: 15px 40px;
-    background-color: #0b2b40;
-    color: white;
+    background-color: white;
+    width: fit-content;
+    padding: 0.2rem;
+    font-weight: bold;
   }
+`;
+
+const CreateButton = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 // const PostText = styled.span`

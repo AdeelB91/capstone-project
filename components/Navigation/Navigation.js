@@ -53,7 +53,7 @@ const Nav = styled.div`
   background-color: #0b2b40;
   background-color: white;
   padding: 8px;
-  height: 6vh;
+  height: 7vh;
   border-top: ridge 3px pink;
 `;
 

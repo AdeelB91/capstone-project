@@ -17,6 +17,7 @@ export default function SignIn({ providers }) {
   if (!providers) {
     return null;
   }
+
   return (
     <>
       <LogInPage>

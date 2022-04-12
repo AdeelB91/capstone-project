@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { GoSignOut } from "react-icons/go";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -8,11 +8,13 @@ export default function Header() {
   return (
     <AppHeader>
       <AppTitle>App-Title</AppTitle>
-      <GoSignOut
-        onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
-        color="black"
-        size={25}
-      />
+      <div>
+        <GoSignOut
+          onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+          color="black"
+          size={25}
+        />
+      </div>
     </AppHeader>
   );
 }
@@ -25,6 +27,10 @@ const AppHeader = styled.header`
   justify-content: space-between;
   padding: 0.8vh;
   border-bottom: solid 2px;
+
+  > div {
+    cursor: pointer;
+  }
 `;
 
 const AppTitle = styled.h1`
