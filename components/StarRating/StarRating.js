@@ -5,7 +5,7 @@ export default function StarRating({ active, handleChangeActive }) {
     <>
       {active ? (
         <AiFillStar
-          fill={"orange"}
+          fill={"#F2BE22"}
           size={22}
           onClick={() => handleChangeActive()}
         />
