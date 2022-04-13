@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import styled from "styled-components";
+import Head from "next/head";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -10,6 +11,9 @@ export default function Profile() {
 
   return (
     <>
+      <Head>
+        <title>Capstone-Project| Profile</title>
+      </Head>
       <Header />
       <main>
         <ProfileHead>
@@ -19,7 +23,6 @@ export default function Profile() {
             <p>{session.user.email}</p>
           </Info>
         </ProfileHead>
-        {/* test */}
         <PostList />
       </main>
       <Navigation />

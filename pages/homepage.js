@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>RatingApp</title>
+        <title>Capstone-Project| Home</title>
       </Head>
       <Header />
       <main>

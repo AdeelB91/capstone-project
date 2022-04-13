@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Log In</title>
+        <title>Capstone-Project| Sign In</title>
       </Head>
       <Landingpage>
         {/* <Image

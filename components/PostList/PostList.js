@@ -54,7 +54,7 @@ export default function PostList({ type }) {
             ))}
           </Ul>
         ) : (
-          <div>No posts yet 🤷‍♂️</div>
+          <div>keine Beiträge vorhanden 🤷‍♂️</div>
         )
       ) : (
         <div>Loading…</div>

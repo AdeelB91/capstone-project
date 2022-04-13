@@ -68,7 +68,7 @@ export function PostForm({
 
 const Post = styled.form`
   background-color: white;
-  margin-bottom: 0;
+
   > div {
     gap: 15px;
     display: flex;
@@ -94,6 +94,9 @@ const Post = styled.form`
     width: fit-content;
     padding: 0.2rem;
     font-weight: bold;
+    border: solid purple 2spx;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px;
+    cursor: pointer;
   }
 `;
 

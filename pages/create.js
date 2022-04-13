@@ -4,21 +4,28 @@ import Navigation from "../components/Navigation/Navigation";
 import { useCreatePost } from "../utils/hooks/useCreatedPost";
 import Header from "../components/Header/Header";
 import styled from "styled-components";
+import Head from "next/head";
+
 export default function CreatePage() {
   const { handleCreate, isCreating, error } = useCreatePost();
   return (
     <>
+      <Head>
+        <title>Capstone-Project| Beitrag erstellen</title>
+      </Head>
       <Header />
       <main>
-        <PageTitle>Teile deine Empfehlungen</PageTitle>
-        <PostForm
-          onSubmitPost={handleCreate}
-          disabled={isCreating}
-          submitText={isCreating ? "Beitrag wird erstellt..." : "Erstellen"}
-          error={error}
-          id="create"
-        />
-        <Breaker />
+        <Breaker>
+          <PageTitle>Teile deine Empfehlungen</PageTitle>
+          <PostForm
+            onSubmitPost={handleCreate}
+            disabled={isCreating}
+            submitText={isCreating ? "Beitrag wird erstellt..." : "Erstellen"}
+            error={error}
+            id="create"
+          />
+          {/* <Breaker /> */}
+        </Breaker>
       </main>
       <Navigation />
     </>
@@ -34,7 +41,7 @@ const PageTitle = styled.h1`
 `;
 
 const Breaker = styled.div`
-  margin-top: 30vh;
+  height: 500px;
 `;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
