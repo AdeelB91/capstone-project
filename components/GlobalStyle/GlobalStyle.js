@@ -15,10 +15,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   main {
     background-image: url("/SVG/Vector 7.svg");
+    background-size: 100%;
     background-repeat: repeat;
-    background-size: 800px;
-    background-position: 100%;
-    padding: 2vh;
+    height: auto;
+    padding: 3vh 2vh;
     margin-bottom: 5vh;
 
   }

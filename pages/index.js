@@ -20,28 +20,30 @@ export default function Home() {
         <title>Capstone-Project| Sign In</title>
       </Head>
       <Landingpage>
-        {/* <Image
-          alt="App-Logo"
-          src="/SVG/iwwa_lightbulb.svg"
-          height={190}
-          width={170}
-        /> */}
-        <LoginButton />
+        <Container>
+          <Image src={"/SVG/AppText.svg"} width={300} height={100} />
+          <LoginButton />
+        </Container>
       </Landingpage>
     </>
   );
 }
 
 const Landingpage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 18vh;
-  padding-top: 40vh;
   background-image: url("/SVG/Vector 7.svg");
   background-size: 100%;
   background-repeat: space;
+  background-position: fixed;
   height: 100vh;
+  border: solid white 1px;
+  margin-top: 18vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20vh;
 `;
 
 export async function getServerSideProps(context) {

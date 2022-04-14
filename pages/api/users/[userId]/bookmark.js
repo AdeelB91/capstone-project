@@ -15,14 +15,34 @@ export default async function handler(request, response) {
     }
     switch (request.method) {
       case "PATCH":
+        const user = await User.findById(session.user.id);
+
         await User.updateOne(
           { _id: session.user.id },
           { $addToSet: { bookmarkedPosts: [postId] } }
         );
-      // if (!user) {
+
+      // const isBookmarked = user.bookmarkedPosts.id === session.user.id;
+      // const updateOperation = isBookmarked ? "$pull" : "$push";
+
+      // const updatedPost = await Post.findByIdAndUpdate(
+      //   postId,
+      //   {
+      //     [updateOperation]: { bookmarkedPosts: [postId] },
+      //   },
+      //   { returnDocument: "after", runValidators: true }
+      // );
+
+      // if (updatedPost) {
+      //   response.status(200).json({
+      //     success: true,
+      //     data: updatedPost,
+      //   });
+      // } else {
       //   response.status(404).json({ error: "Not found" });
-      //   return;
       // }
+
+      // break;
 
       default:
         console.log("request method was neither PATCH or DELETE");

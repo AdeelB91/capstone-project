@@ -4,44 +4,25 @@ import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import styled from "styled-components";
 import Head from "next/head";
-import { RiBookMarkFill } from "react-icons/ri";
+import { RiBookMarkFill, RiContactsBook2Fill } from "react-icons/ri";
 import useSWR from "swr";
 import { useState } from "react";
+import { Post } from "../components/Post/Post";
 
 export default function Profile() {
-  const users = useSWR("/api/users");
-  const posts = useSWR("/api/posts");
+  const bookmarkedPosts = useSWR("/api/bookmarked");
+  const ownPosts = useSWR("/api/posts");
 
   const { data: session } = useSession();
 
-  const [active, setActive] = useState();
-
-  let profileUser = undefined;
-
-  if (users.data) {
-    profileUser = users.data.find((user) => user._id === session.user.id);
-  }
-
-  let filteredArray;
-
-  console.log(profileUser);
+  const [active, setActive] = useState(true);
 
   function handleClick() {
-    console.log(posts.data);
-    if (posts.data) {
-      filteredArray = posts.data.filter((post) => {
-        return post._id === profileUser._id;
-      });
-
-      // console.log(profileUser, "user");
-      // console.log(profileUser.bookmarkedPosts, "bookmark");
-      console.log(filteredArray, "array");
-    }
     setActive(true);
   }
-  console.log(posts.data);
-  console.log(filteredArray);
-
+  function handleBookmarks() {
+    setActive(false);
+  }
   return (
     <>
       <Head>
@@ -56,13 +37,21 @@ export default function Profile() {
             <p>{session.user.email}</p>
           </Info>
         </ProfileHead>
-        <BookmarkIcon size={40} onClick={handleClick} />
+        <IconContainer>
+          <ProfileIcon
+            size={50}
+            className={active === true ? "active" : ""}
+            onClick={handleClick}
+          />
+          <BookmarkIcon
+            size={50}
+            className={!active === true ? "active" : ""}
+            onClick={handleBookmarks}
+          />
+        </IconContainer>
+        {active ? <PostList posts={ownPosts.data} /> : null}
 
-        {active ? (
-          <PostList posts={posts.data} />
-        ) : (
-          <PostList posts={posts.data} />
-        )}
+        {!active ? <PostList posts={bookmarkedPosts.data} /> : null}
       </main>
       <Navigation />
     </>
@@ -81,6 +70,12 @@ const ProfileHead = styled.div`
   }
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5vh;
+  gap: 10vh;
+`;
 const Info = styled.div`
   display: flex;
   flex-direction: column;
@@ -94,8 +89,24 @@ const Info = styled.div`
 
 const BookmarkIcon = styled(RiBookMarkFill)`
   cursor: pointer;
+  opacity: 0.5;
 
   &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+  }
+`;
+
+const ProfileIcon = styled(RiContactsBook2Fill)`
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
     opacity: 1;
   }
 `;

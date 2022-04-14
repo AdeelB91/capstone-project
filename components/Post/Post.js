@@ -26,25 +26,18 @@ export function Post({ post }) {
   const posts = useSWR("/api/posts");
   const users = useSWR("/api/users");
 
-  const { handleBookmark, isBookmarking } = useBookmarkPost(post);
+  const { handleBookmark } = useBookmarkPost(post);
 
   const { handleDelete, isDeleting } = useDeletePost(post);
 
   function handleClick() {
-    console.log(post);
+    console.log(post, "click");
     handleBookmark(post);
   }
 
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
   const isLiked = post.likes.includes(session?.user?.id);
-
-  if (users.data) {
-    const isBookmarked = users.data.find((user) =>
-      user.bookmarkedPosts.includes(post._id)
-    );
-    console.log(isBookmarked);
-  }
 
   if (isEditMode) {
     return (
@@ -89,11 +82,7 @@ export function Post({ post }) {
             </Buttons>
           ) : null}
           {isOwnPost ? null : (
-            <BookmarkIcon
-              id={post._id}
-              active={isBookmarking}
-              handleClick={handleClick}
-            />
+            <BookmarkIcon id={post._id} onClick={handleClick} />
           )}
         </PostHead>
         <PostMain>
