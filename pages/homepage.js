@@ -4,8 +4,11 @@ import { getSession } from "next-auth/react";
 import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
+import useSWR from "swr";
 
 export default function HomePage() {
+  const posts = useSWR("/api/feed");
+
   return (
     <>
       <Head>
@@ -14,7 +17,7 @@ export default function HomePage() {
       <Header />
       <main>
         {/* <Categories /> */}
-        <PostList type="feed" />
+        {posts.data ? <PostList posts={posts.data} /> : null}
       </main>
       <Navigation />
     </>

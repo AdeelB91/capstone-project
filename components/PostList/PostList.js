@@ -4,14 +4,13 @@ import styled from "styled-components";
 import { categories } from "../../categories";
 import { useState } from "react";
 
-export default function PostList({ type }) {
+export default function PostList({ posts }) {
   const [categoryFilter, setCategoryFilter] = useState();
   // const [active, setActive] = useState(false);
 
-  const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
   const filteredPosts = categoryFilter
-    ? posts.data?.filter((post) => post.category === categoryFilter)
-    : posts.data;
+    ? posts?.filter((post) => post.category === categoryFilter)
+    : posts;
   function handleClick(category) {
     setCategoryFilter(category);
     // setActive(true);
@@ -80,7 +79,7 @@ const CategoryContainer = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0.5vh;
-  margin: 4vh 0;
+  margin: 1vh 0;
   background-color: white;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
@@ -103,10 +102,10 @@ const CategoryButton = styled.button`
   padding: 1px;
   cursor: pointer;
 
-  &.hover {
+  &:hover {
     background-color: lightblue;
   }
-  &.active {
+  &:active {
     background-color: lightblue;
     border: 1px solid black;
     padding: 2px;

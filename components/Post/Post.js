@@ -9,6 +9,8 @@ import StarRating from "../StarRating/StarRating";
 import { useState } from "react";
 import useSWR from "swr";
 import { useLikePost } from "../../utils/hooks/useLikePost";
+import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
+import { useBookmarkPost } from "../../utils/hooks/useBookmarkPost";
 
 const dateFormatter = Intl.DateTimeFormat("en", {
   dateStyle: "long",
@@ -18,15 +20,31 @@ const dateFormatter = Intl.DateTimeFormat("en", {
 export function Post({ post }) {
   const { activateEditMode, error, handleEdit, isEditMode, isUpdating } =
     useEditPost(post);
+
   const { handleLike } = useLikePost(post._id);
 
   const posts = useSWR("/api/posts");
+  const users = useSWR("/api/users");
+
+  const { handleBookmark, isBookmarking } = useBookmarkPost(post);
 
   const { handleDelete, isDeleting } = useDeletePost(post);
+
+  function handleClick() {
+    console.log(post);
+    handleBookmark(post);
+  }
 
   const { data: session } = useSession();
   const isOwnPost = post.userId && session?.user?.id === post.userId?._id;
   const isLiked = post.likes.includes(session?.user?.id);
+
+  if (users.data) {
+    const isBookmarked = users.data.find((user) =>
+      user.bookmarkedPosts.includes(post._id)
+    );
+    console.log(isBookmarked);
+  }
 
   if (isEditMode) {
     return (
@@ -70,6 +88,13 @@ export function Post({ post }) {
               />
             </Buttons>
           ) : null}
+          {isOwnPost ? null : (
+            <BookmarkIcon
+              id={post._id}
+              active={isBookmarking}
+              handleClick={handleClick}
+            />
+          )}
         </PostHead>
         <PostMain>
           <h4>{post.category}</h4>
