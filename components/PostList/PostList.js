@@ -106,6 +106,7 @@ const CategoryButton = styled.button`
   border-bottom: 1px solid;
   padding: 1px;
   font-size: 16px;
+  color: #0b2b40;
 
   cursor: pointer;
 
