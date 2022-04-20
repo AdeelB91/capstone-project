@@ -44,7 +44,7 @@ export function PostForm({
               </option>
             ))}
           </select>
-          <label htmlFor={`text-${id}`}>Beitrag</label>
+          <label htmlFor={`text-${id}`}>Beitrag:</label>
           <input
             type="text"
             id={`text-${id}`}
@@ -76,7 +76,7 @@ const Post = styled.form`
     justify-content: center;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
       rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    padding: 20px;
+    padding: 3vh;
     margin-bottom: 50px;
   }
   label {
@@ -86,6 +86,7 @@ const Post = styled.form`
     appearance: none;
     padding: 1rem;
     width: auto;
+    height: 100px;
     border: 1px solid rgb(190 190 190);
     border-radius: 3px;
   }

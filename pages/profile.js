@@ -4,11 +4,25 @@ import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import styled from "styled-components";
 import Head from "next/head";
+import { RiBookMarkFill, RiContactsBook2Fill } from "react-icons/ri";
+import useSWR from "swr";
+import { useState } from "react";
+import { Post } from "../components/Post/Post";
 
 export default function Profile() {
-  const { data: session } = useSession();
-  console.log();
+  const bookmarkedPosts = useSWR("/api/bookmarked");
+  const ownPosts = useSWR("/api/posts");
 
+  const { data: session } = useSession();
+
+  const [active, setActive] = useState(true);
+
+  function handleClick() {
+    setActive(true);
+  }
+  function handleBookmarks() {
+    setActive(false);
+  }
   return (
     <>
       <Head>
@@ -23,7 +37,21 @@ export default function Profile() {
             <p>{session.user.email}</p>
           </Info>
         </ProfileHead>
-        <PostList />
+        <IconContainer>
+          <ProfileIcon
+            size={50}
+            className={active === true ? "active" : ""}
+            onClick={handleClick}
+          />
+          <BookmarkIcon
+            size={50}
+            className={!active === true ? "active" : ""}
+            onClick={handleBookmarks}
+          />
+        </IconContainer>
+        {active ? <PostList posts={ownPosts.data} /> : null}
+
+        {!active ? <PostList posts={bookmarkedPosts.data} /> : null}
       </main>
       <Navigation />
     </>
@@ -32,15 +60,22 @@ export default function Profile() {
 
 const ProfileHead = styled.div`
   display: flex;
-  margin: 0.7rem 0.4rem 0.4rem 0.4rem;
+  margin: 0.7rem 0 0rem 0.4rem;
   align-items: flex-end;
   gap: 1vh;
+  position: relative;
   > img {
     width: 70px;
     border-radius: 35px;
   }
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5vh 0 3vh;
+  gap: 10vh;
+`;
 const Info = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,6 +84,30 @@ const Info = styled.div`
   }
   p {
     font-size: medium;
+  }
+`;
+
+const BookmarkIcon = styled(RiBookMarkFill)`
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+  }
+`;
+
+const ProfileIcon = styled(RiContactsBook2Fill)`
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
   }
 `;
 

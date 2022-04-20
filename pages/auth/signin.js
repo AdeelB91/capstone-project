@@ -10,7 +10,7 @@ export default function SignIn({ providers }) {
   const router = useRouter();
   useEffect(() => {
     if (session) {
-      router.push("/homepage");
+      router.push("/");
     }
   }, [session, router]);
 
@@ -21,52 +21,121 @@ export default function SignIn({ providers }) {
   return (
     <>
       <LogInPage>
+        <Image src={"/SVG/bluelogo.svg"} width={300} height={150} />
+        <Image src={"/SVG/blue.svg"} width={300} height={100} />
         <LogInContainer>
-          {/* <Image
-          alt="App-Logo"
-          src="/SVG/iwwa_lightbulb.svg"
-          height={190}
-          width={170}
-        /> */}
+          {Object.values(providers).map((provider) => (
+            <div key={provider.name}>
+              <LogInButton onClick={() => signIn(provider.id)}>
+                Sign in with {provider.name}
+              </LogInButton>
+            </div>
+          ))}
         </LogInContainer>
-        {Object.values(providers).map((provider) => (
-          <div key={provider.name}>
-            <LogInButton onClick={() => signIn(provider.id)}>
-              {<FcGoogle size={25} />} Sign in with {provider.name}
-            </LogInButton>
-          </div>
-        ))}
       </LogInPage>
     </>
   );
 }
-const LogInPage = styled.main`
-  background-image: url("/SVG/Vector 7.svg");
+
+const LogInPage = styled.div`
+  /* background-image: url("/SVG/Vector 7.svg"); */
   background-size: 100%;
   background-repeat: space;
+  background-position: fixed;
   height: 100vh;
+  margin-top: 15vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 28.5vh;
-  gap: 5vh;
+  gap: 2vh;
 `;
 
 const LogInContainer = styled.div`
-  margin-bottom: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+  margin-top: 7vh;
 `;
 const LogInButton = styled.button`
-  width: fit-content;
-  font-size: 2vh;
-  border-radius: 1rem;
-  color: #0b2b40;
-  background-color: white;
-  padding: 1vh 2vh 1vh 1.6vh;
   display: flex;
+  gap: 1.1vh;
   align-items: center;
-  gap: 1.5vh;
+  width: auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: white;
+  background: #1167b7;
   cursor: pointer;
-  border: solid black 2px;
+  position: relative;
+  border: black solid 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 0;
+  border-radius: 10px;
+
+  :before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  :active {
+    color: #000;
+  }
+
+  :active:after {
+    background: transparent;
+  }
+
+  :hover:before {
+    opacity: 1;
+  }
+
+  :after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1167b7;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
 `;
 
 export async function getServerSideProps(context) {

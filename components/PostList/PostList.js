@@ -4,22 +4,23 @@ import styled from "styled-components";
 import { categories } from "../../categories";
 import { useState } from "react";
 
-export default function PostList({ type }) {
+export default function PostList({ posts }) {
   const [categoryFilter, setCategoryFilter] = useState();
-  // const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
 
-  const posts = useSWR(type === "feed" ? "/api/feed" : "/api/posts");
   const filteredPosts = categoryFilter
-    ? posts.data?.filter((post) => post.category === categoryFilter)
-    : posts.data;
+    ? posts?.filter((post) => post.category === categoryFilter)
+    : posts;
   function handleClick(category) {
     setCategoryFilter(category);
-    // setActive(true);
+    setActive(true);
+
     // console.log();
   }
 
   function handleShowAll() {
     setCategoryFilter(undefined);
+    setActive(false);
   }
   console.log(categoryFilter);
 
@@ -29,7 +30,7 @@ export default function PostList({ type }) {
         <CategoryBar>
           {categories.map((category) => (
             <CategoryButton
-              //           className={active === true ? "active" : ""}
+              className={active === true ? "active" : ""}
               onClick={() => handleClick(category.name)}
               key={category.id}
               id={category.id}
@@ -39,7 +40,10 @@ export default function PostList({ type }) {
           ))}
         </CategoryBar>
         <div>
-          <CategoryButton onClick={handleShowAll}>
+          <CategoryButton
+            className={!active === true ? "active" : ""}
+            onClick={handleShowAll}
+          >
             Alle Empfehlungen
           </CategoryButton>
         </div>
@@ -69,9 +73,9 @@ const Ul = styled.ul`
   gap: 1rem;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 1vh;
+  margin-bottom: 0.5vh;
   > li {
-    padding: 1vh;
+    padding: 0.5vh;
   }
 `;
 
@@ -80,7 +84,7 @@ const CategoryContainer = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0.5vh;
-  margin: 4vh 0;
+  margin: 1vh 0;
   background-color: white;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
@@ -103,13 +107,11 @@ const CategoryButton = styled.button`
   padding: 1px;
   cursor: pointer;
 
-  &.hover {
-    background-color: lightblue;
+  &:hover {
+    font-weight: bold;
+    font-size: 16px;
   }
   &.active {
-    background-color: lightblue;
-    border: 1px solid black;
-    padding: 2px;
-    font-size: medium;
+    font-weight: bold;
   }
 `;

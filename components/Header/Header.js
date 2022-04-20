@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { GoSignOut } from "react-icons/go";
 import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
 
 export default function Header() {
   const { data: session } = useSession();
 
   return (
     <AppHeader>
-      <AppTitle>App-Title</AppTitle>
+      <Image src={"/SVG/bluelogo.svg"} width={40} height={50} />
+      <Image src={"/SVG/blue.svg"} width={220} height={65} />
+
       <div>
         <GoSignOut
           onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}

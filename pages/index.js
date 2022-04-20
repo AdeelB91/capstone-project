@@ -1,52 +1,40 @@
 import Head from "next/head";
 import styled from "styled-components";
-import LoginButton from "../components/LoginButton/LoginButton.js";
-import { getSession, useSession } from "next-auth/react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { getSession } from "next-auth/react";
+import Header from "../components/Header/Header";
+import Navigation from "../components/Navigation/Navigation";
+import PostList from "../components/PostList/PostList";
+import useSWR from "swr";
 
-export default function Home() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  useEffect(() => {
-    if (session) {
-      router.push("/homepage");
-    }
-  }, [session, router]);
+export default function HomePage() {
+  const posts = useSWR("/api/feed");
+
   return (
     <>
       <Head>
-        <title>Capstone-Project| Sign In</title>
+        <title>Capstone-Project| Home</title>
       </Head>
-      <Landingpage>
-        {/* <Image
-          alt="App-Logo"
-          src="/SVG/iwwa_lightbulb.svg"
-          height={190}
-          width={170}
-        /> */}
-        <LoginButton />
-      </Landingpage>
+      <Header />
+      <main>
+        {/* <Categories /> */}
+        {posts.data ? <PostList posts={posts.data} /> : null}
+      </main>
+      <Navigation />
     </>
   );
 }
 
-const Landingpage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 18vh;
-  padding-top: 40vh;
-  background-image: url("/SVG/Vector 7.svg");
-  background-size: 100%;
-  background-repeat: space;
-  height: 100vh;
-`;
-
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/signin",
+        permanent: false,
+      },
+    };
+  }
   return {
     props: {
       session,

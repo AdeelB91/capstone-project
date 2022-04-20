@@ -9,8 +9,8 @@ export default function Navigation() {
   return (
     <>
       <Nav>
-        <Link href="/homepage" passHref>
-          <IconLink className={router.pathname == "/homepage" ? "active" : ""}>
+        <Link href="/" passHref>
+          <IconLink className={router.pathname == "/" ? "active" : ""}>
             <Image
               alt="homeicon"
               src="/SVG/home_black_24dp.svg"
@@ -54,7 +54,7 @@ const Nav = styled.div`
   background-color: white;
   padding: 8px;
   height: 7vh;
-  border-top: ridge 3px pink;
+  border-top: ridge 3px;
 `;
 
 const IconLink = styled.a`
