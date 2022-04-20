@@ -110,7 +110,7 @@ const CategoryButton = styled.button`
 
   cursor: pointer;
 
-  &.hover {
+  :hover {
     font-weight: bold;
     font-size: 18px;
   }
