@@ -17,32 +17,32 @@ export default async function handler(request, response) {
       case "PATCH":
         const user = await User.findById(session.user.id);
 
-        await User.updateOne(
-          { _id: session.user.id },
-          { $addToSet: { bookmarkedPosts: [postId] } }
+        // await User.updateOne(
+        //   { _id: session.user.id },
+        //   { $addToSet: { bookmarkedPosts: [postId] } }
+        // );
+
+        const isBookmarked = user.bookmarkedPosts.includes(postId);
+        const updateOperation = isBookmarked ? "$pull" : "$push";
+
+        const updatedUser = await User.findByIdAndUpdate(
+          session.user.id,
+          {
+            [updateOperation]: { bookmarkedPosts: postId },
+          },
+          { returnDocument: "after", runValidators: true }
         );
 
-      // const isBookmarked = user.bookmarkedPosts.id === session.user.id;
-      // const updateOperation = isBookmarked ? "$pull" : "$push";
+        if (updatedUser) {
+          response.status(200).json({
+            success: true,
+            data: updatedUser,
+          });
+        } else {
+          response.status(404).json({ error: "Not found" });
+        }
 
-      // const updatedPost = await Post.findByIdAndUpdate(
-      //   postId,
-      //   {
-      //     [updateOperation]: { bookmarkedPosts: [postId] },
-      //   },
-      //   { returnDocument: "after", runValidators: true }
-      // );
-
-      // if (updatedPost) {
-      //   response.status(200).json({
-      //     success: true,
-      //     data: updatedPost,
-      //   });
-      // } else {
-      //   response.status(404).json({ error: "Not found" });
-      // }
-
-      // break;
+        break;
 
       default:
         console.log("request method was neither PATCH or DELETE");

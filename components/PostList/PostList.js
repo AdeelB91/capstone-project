@@ -6,19 +6,21 @@ import { useState } from "react";
 
 export default function PostList({ posts }) {
   const [categoryFilter, setCategoryFilter] = useState();
-  // const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
 
   const filteredPosts = categoryFilter
     ? posts?.filter((post) => post.category === categoryFilter)
     : posts;
   function handleClick(category) {
     setCategoryFilter(category);
-    // setActive(true);
+    setActive(true);
+
     // console.log();
   }
 
   function handleShowAll() {
     setCategoryFilter(undefined);
+    setActive(false);
   }
   console.log(categoryFilter);
 
@@ -28,7 +30,7 @@ export default function PostList({ posts }) {
         <CategoryBar>
           {categories.map((category) => (
             <CategoryButton
-              //           className={active === true ? "active" : ""}
+              className={active === true ? "active" : ""}
               onClick={() => handleClick(category.name)}
               key={category.id}
               id={category.id}
@@ -38,7 +40,10 @@ export default function PostList({ posts }) {
           ))}
         </CategoryBar>
         <div>
-          <CategoryButton onClick={handleShowAll}>
+          <CategoryButton
+            className={!active === true ? "active" : ""}
+            onClick={handleShowAll}
+          >
             Alle Empfehlungen
           </CategoryButton>
         </div>
@@ -68,9 +73,9 @@ const Ul = styled.ul`
   gap: 1rem;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 1vh;
+  margin-bottom: 0.5vh;
   > li {
-    padding: 1vh;
+    padding: 0.5vh;
   }
 `;
 
@@ -103,12 +108,10 @@ const CategoryButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: lightblue;
+    font-weight: bold;
+    font-size: 16px;
   }
-  &:active {
-    background-color: lightblue;
-    border: 1px solid black;
-    padding: 2px;
-    font-size: medium;
+  &.active {
+    font-weight: bold;
   }
 `;

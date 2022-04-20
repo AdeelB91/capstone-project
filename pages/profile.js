@@ -73,7 +73,7 @@ const ProfileHead = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 5vh;
+  margin: 5vh 0 3vh;
   gap: 10vh;
 `;
 const Info = styled.div`

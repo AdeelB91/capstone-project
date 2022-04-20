@@ -8,7 +8,9 @@ export default function Header() {
 
   return (
     <AppHeader>
-      <Image src={"/SVG/AppText.svg"} width={250} height={55} />
+      <Image src={"/SVG/bluelogo.svg"} width={40} height={50} />
+      <Image src={"/SVG/blue.svg"} width={220} height={65} />
+
       <div>
         <GoSignOut
           onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}

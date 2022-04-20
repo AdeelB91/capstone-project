@@ -11,8 +11,8 @@ export default async function handler(request, response) {
     switch (request.method) {
       case "GET":
         if (session) {
-          const users = await User.find();
-          response.status(200).json(users);
+          const user = await User.findById(session.user.id);
+          response.status(200).json(user);
         } else {
           response.status(401).json({ error: "Not authenticated" });
         }

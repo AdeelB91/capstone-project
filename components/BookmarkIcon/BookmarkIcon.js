@@ -1,9 +1,15 @@
 import { BsBookmarkHeart, BsBookmarkDash } from "react-icons/bs";
 import styled from "styled-components";
 
-export default function BookmarkIcon({ active = false }) {
+export default function BookmarkIcon({ active, handleClick }) {
   return (
-    <>{active ? <BookmarkDash size={22} /> : <BookmarkHeart size={22} />}</>
+    <>
+      {active ? (
+        <BookmarkDash size={22} onClick={() => handleClick()} />
+      ) : (
+        <BookmarkHeart size={22} onClick={() => handleClick()} />
+      )}
+    </>
   );
 }
 

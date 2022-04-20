@@ -14,7 +14,7 @@ export default function CreatePage() {
         <title>Capstone-Project| Beitrag erstellen</title>
       </Head>
       <Header />
-      <main>
+      <CreateStylePage>
         <Breaker>
           <PageTitle>Teile deine Empfehlungen</PageTitle>
           <PostForm
@@ -26,7 +26,7 @@ export default function CreatePage() {
           />
           {/* <Breaker /> */}
         </Breaker>
-      </main>
+      </CreateStylePage>
       <Navigation />
     </>
   );
@@ -35,13 +35,21 @@ export default function CreatePage() {
 const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
-  margin-top: 20vh;
+  margin-top: 8vh;
   font-size: 24px;
   margin-bottom: 1vh;
+`;
+const CreateStylePage = styled.main`
+  background-image: url("/SVG/Vector 7.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: auto;
+  margin-top: 10vh;
 `;
 
 const Breaker = styled.div`
   height: 500px;
+  padding: 1vh 0 30;
 `;
 export async function getServerSideProps(context) {
   const session = await getSession(context);

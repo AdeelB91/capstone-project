@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     margin: 0;
     padding: 0;
+
     
   }
   main {
@@ -18,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     background-size: 100%;
     background-repeat: repeat;
     height: auto;
-    padding: 3vh 2vh;
+    padding: 3vh 0.5vh;
     margin-bottom: 5vh;
 
   }

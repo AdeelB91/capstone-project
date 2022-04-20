@@ -3,6 +3,7 @@ import useSWR from "swr";
 
 export function useBookmarkPost(post) {
   const posts = useSWR("/api/posts");
+  const user = useSWR("/api/users/current");
 
   const [isBookmarking, setIsBookmarking] = useState(false);
   const [error, setError] = useState();
@@ -15,6 +16,7 @@ export function useBookmarkPost(post) {
     const bookmarkedPost = await response.json();
     if (response.ok) {
       posts.mutate();
+      user.mutate();
       setError();
     } else {
       setError(bookmarkedPost.error ?? "Something went wrong");

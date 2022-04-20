@@ -10,7 +10,7 @@ export default function SignIn({ providers }) {
   const router = useRouter();
   useEffect(() => {
     if (session) {
-      router.push("/homepage");
+      router.push("/");
     }
   }, [session, router]);
 
@@ -21,12 +21,13 @@ export default function SignIn({ providers }) {
   return (
     <>
       <LogInPage>
+        <Image src={"/SVG/bluelogo.svg"} width={300} height={150} />
+        <Image src={"/SVG/blue.svg"} width={300} height={100} />
         <LogInContainer>
-          <Image src={"/SVG/AppText.svg"} width={300} height={100} />
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <LogInButton onClick={() => signIn(provider.id)}>
-                {<FcGoogle size={25} />} Sign in with {provider.name}
+                Sign in with {provider.name}
               </LogInButton>
             </div>
           ))}
@@ -35,35 +36,39 @@ export default function SignIn({ providers }) {
     </>
   );
 }
+
 const LogInPage = styled.div`
-  background-image: url("/SVG/Vector 7.svg");
+  /* background-image: url("/SVG/Vector 7.svg"); */
   background-size: 100%;
   background-repeat: space;
   background-position: fixed;
   height: 100vh;
-  border: solid white 1px;
-  margin-top: 18vh;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 `;
 
 const LogInContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20vh;
+  gap: 3vh;
+  margin-top: 7vh;
 `;
 const LogInButton = styled.button`
   display: flex;
   gap: 1.1vh;
   align-items: center;
-  width: 180px;
-  padding: 8px;
+  width: auto;
+  padding: 10px;
   border: none;
   outline: none;
-  color: black;
-  background: white;
+  color: white;
+  background: #1167b7;
   cursor: pointer;
   position: relative;
-  border: black solid 1.6px;
+  border: black solid 2px;
   font-size: 0.9rem;
   font-weight: 500;
   z-index: 0;
@@ -115,7 +120,7 @@ const LogInButton = styled.button`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: white;
+    background: #1167b7;
     left: 0;
     top: 0;
     border-radius: 10px;
