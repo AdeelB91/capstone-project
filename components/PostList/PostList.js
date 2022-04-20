@@ -114,7 +114,4 @@ const CategoryButton = styled.button`
     font-weight: bold;
     font-size: 18px;
   }
-  &.active {
-    font-weight: bold;
-  }
 `;
