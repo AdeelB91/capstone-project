@@ -105,11 +105,13 @@ const CategoryButton = styled.button`
   border: none;
   border-bottom: 1px solid;
   padding: 1px;
+  font-size: 16px;
+
   cursor: pointer;
 
-  &:hover {
+  &.hover {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
   }
   &.active {
     font-weight: bold;

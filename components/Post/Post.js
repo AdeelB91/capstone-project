@@ -156,7 +156,14 @@ const PostMain = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3vh;
-  margin: 0.5vh 1.3vh;
+  margin: 0.5vh 0.5vh;
+
+  h4 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 1rem;
+  }
 `;
 
 const LikeContainer = styled.div`

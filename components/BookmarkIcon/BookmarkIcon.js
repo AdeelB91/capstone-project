@@ -5,9 +5,9 @@ export default function BookmarkIcon({ active, handleClick }) {
   return (
     <>
       {active ? (
-        <BookmarkDash size={22} onClick={() => handleClick()} />
+        <BookmarkDash size={25} onClick={() => handleClick()} />
       ) : (
-        <BookmarkHeart size={22} onClick={() => handleClick()} />
+        <BookmarkHeart size={25} onClick={() => handleClick()} />
       )}
     </>
   );

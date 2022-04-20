@@ -15,17 +15,16 @@ export default function CreatePage() {
       </Head>
       <Header />
       <CreateStylePage>
-        <Breaker>
-          <PageTitle>Teile deine Empfehlungen</PageTitle>
-          <PostForm
-            onSubmitPost={handleCreate}
-            disabled={isCreating}
-            submitText={isCreating ? "Beitrag wird erstellt..." : "Erstellen"}
-            error={error}
-            id="create"
-          />
-          {/* <Breaker /> */}
-        </Breaker>
+        <PageTitle>Teile deine Empfehlungen</PageTitle>
+        <PostForm
+          onSubmitPost={handleCreate}
+          disabled={isCreating}
+          submitText={
+            isCreating ? "Beitrag wird erstellt..." : "Beitrag erstellen"
+          }
+          error={error}
+          id="create"
+        />
       </CreateStylePage>
       <Navigation />
     </>
@@ -35,22 +34,11 @@ export default function CreatePage() {
 const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
-  margin-top: 8vh;
-  font-size: 24px;
-  margin-bottom: 1vh;
+  margin: 10vh 0 3.6vh;
+  font-size: 1.7rem;
 `;
-const CreateStylePage = styled.main`
-  background-image: url("/SVG/Vector 7.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  height: auto;
-  margin-top: 10vh;
-`;
+const CreateStylePage = styled.main``;
 
-const Breaker = styled.div`
-  height: 500px;
-  padding: 1vh 0 30;
-`;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   if (!session) {

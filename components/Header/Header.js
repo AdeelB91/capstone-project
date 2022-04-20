@@ -8,14 +8,14 @@ export default function Header() {
 
   return (
     <AppHeader>
-      <Image src={"/SVG/bluelogo.svg"} width={40} height={50} />
-      <Image src={"/SVG/blue.svg"} width={220} height={65} />
+      <Image src={"/SVG/bluelogo.svg"} width={30} height={40} />
+      <Image src={"/SVG/blue.svg"} width={250} height={50} />
 
       <div>
         <GoSignOut
           onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
           color="black"
-          size={25}
+          size={30}
         />
       </div>
     </AppHeader>
@@ -34,8 +34,4 @@ const AppHeader = styled.header`
   > div {
     cursor: pointer;
   }
-`;
-
-const AppTitle = styled.h1`
-  margin-top: 1vh;
 `;

@@ -11,15 +11,14 @@ export const GlobalStyle = createGlobalStyle`
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     margin: 0;
     padding: 0;
-
-    
   }
+
   main {
     background-image: url("/SVG/Vector 7.svg");
     background-size: 100%;
     background-repeat: repeat;
-    height: auto;
-    padding: 3vh 0.5vh;
+    min-height: 667px;
+    padding: 3vh 1vh;
     margin-bottom: 5vh;
 
   }

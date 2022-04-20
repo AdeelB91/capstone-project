@@ -47,12 +47,12 @@ export default function Navigation() {
 const Nav = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #0b2b40;
   background-color: white;
-  padding: 8px;
+  padding: 2vh 0 1vh;
   height: 7vh;
   border-top: ridge 3px;
 `;
