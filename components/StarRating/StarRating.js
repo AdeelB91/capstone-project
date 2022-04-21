@@ -14,10 +14,15 @@ export default function StarRating({ active, handleChangeActive }) {
 }
 
 const FillStar = styled(AiFillStar)`
-  font-size: 22px;
+  font-size: 25px;
   @media screen and (min-width: 700px) {
     font-size: 35px;
   }
 `;
 
-const OutlineStar = styled(AiOutlineStar)``;
+const OutlineStar = styled(AiOutlineStar)`
+  font-size: 22px;
+  @media screen and (min-width: 700px) {
+    font-size: 35px;
+  }
+`;
