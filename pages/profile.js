@@ -65,7 +65,6 @@ const ProfileHead = styled.div`
   position: relative;
   border: solid 1px white;
   background-color: white;
-  background-color: white;
   gap: 5vh;
   padding: 1rem 1rem 0.7rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
