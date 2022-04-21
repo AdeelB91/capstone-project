@@ -127,6 +127,7 @@ const CategoryButton = styled.button`
       font-weight: bold;
     }
   }
+
 `;
 
 const NoEntry = styled.div`
@@ -142,4 +143,5 @@ const NoEntry = styled.div`
     margin: 5vh 40vh;
     font-size: 1.5rem;
   }
+
 `;
