@@ -31,24 +31,24 @@ export default function Profile() {
       <Header />
       <main>
         <ProfileHead>
-          <img alt="profilepic" src={session.user.image} />
-          <Info>
-            <h2>{session.user.name}</h2>
-            <p>{session.user.email}</p>
-          </Info>
+          <ProfilePart>
+            <img alt="profilepic" src={session.user.image} />
+            <Info>
+              <h2>{session.user.name}</h2>
+              <p>{session.user.email}</p>
+            </Info>
+          </ProfilePart>
+          <IconContainer>
+            <ProfileIcon
+              className={active === true ? "active" : ""}
+              onClick={handleClick}
+            />
+            <BookmarkIcon
+              className={!active === true ? "active" : ""}
+              onClick={handleBookmarks}
+            />
+          </IconContainer>
         </ProfileHead>
-        <IconContainer>
-          <ProfileIcon
-            size={50}
-            className={active === true ? "active" : ""}
-            onClick={handleClick}
-          />
-          <BookmarkIcon
-            size={50}
-            className={!active === true ? "active" : ""}
-            onClick={handleBookmarks}
-          />
-        </IconContainer>
         {active ? <PostList posts={ownPosts.data} /> : null}
 
         {!active ? <PostList posts={bookmarkedPosts.data} /> : null}
@@ -60,36 +60,66 @@ export default function Profile() {
 
 const ProfileHead = styled.div`
   display: flex;
-  margin: 0.7rem 0 0rem 0.4rem;
-  align-items: flex-end;
-  gap: 1vh;
+  flex-direction: column;
+  margin-bottom: 2vh;
   position: relative;
-  > img {
-    width: 70px;
-    border-radius: 35px;
+  border: solid 1px white;
+  background-color: white;
+  background-color: white;
+  gap: 5vh;
+  padding: 1rem 1rem 0.7rem;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  @media screen and (min-width: 700px) {
+    margin: 1vh 40vh 0.3vh;
   }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 5vh 0 3vh;
   gap: 10vh;
+`;
+
+const ProfilePart = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > img {
+    width: 85px;
+    border-radius: 45px;
+    @media screen and (min-width: 700px) {
+      width: 110px;
+      border-radius: 65px;
+    }
+  }
 `;
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   > h2 {
-    font-size: large;
+    font-size: 2.4rem;
+    @media screen and (min-width: 700px) {
+      font-size: 3.5rem;
+    }
   }
   p {
-    font-size: medium;
+    font-size: 1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.5rem;
+    }
   }
 `;
 
 const BookmarkIcon = styled(RiBookMarkFill)`
   cursor: pointer;
   opacity: 0.5;
+  font-size: 50px;
+  @media screen and (min-width: 700px) {
+    font-size: 75px;
+  }
 
   &:hover {
     opacity: 1;
@@ -102,6 +132,11 @@ const BookmarkIcon = styled(RiBookMarkFill)`
 const ProfileIcon = styled(RiContactsBook2Fill)`
   cursor: pointer;
   opacity: 0.5;
+  font-size: 50px;
+
+  @media screen and (min-width: 700px) {
+    font-size: 75px;
+  }
 
   &:hover {
     opacity: 1;

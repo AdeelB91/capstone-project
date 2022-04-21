@@ -8,14 +8,18 @@ export default function Header() {
 
   return (
     <AppHeader>
-      <Image src={"/SVG/bluelogo.svg"} width={30} height={40} />
-      <Image src={"/SVG/blue.svg"} width={250} height={50} />
+      <LogoImage
+        alt="App Logo"
+        src={"/SVG/bluelogo.svg"}
+        width={30}
+        height={40}
+      />
+      <NameImage alt="App Name" src={"/SVG/blue.svg"} width={250} height={50} />
 
       <div>
-        <GoSignOut
+        <SignOutButton
           onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
           color="black"
-          size={30}
         />
       </div>
     </AppHeader>
@@ -24,7 +28,7 @@ export default function Header() {
 
 const AppHeader = styled.header`
   background-color: white;
-  height: 7.5vh;
+  height: 8vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -33,5 +37,15 @@ const AppHeader = styled.header`
 
   > div {
     cursor: pointer;
+  }
+`;
+
+const LogoImage = styled(Image)``;
+const NameImage = styled(Image)``;
+
+const SignOutButton = styled(GoSignOut)`
+  font-size: 30px;
+  @media screen and (min-width: 700px) {
+    font-size: 40px;
   }
 `;

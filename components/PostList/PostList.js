@@ -58,7 +58,7 @@ export default function PostList({ posts }) {
             ))}
           </Ul>
         ) : (
-          <div>keine Beiträge vorhanden 🤷‍♂️</div>
+          <NoEntry>keine Beiträge vorhanden 🤷‍♂️</NoEntry>
         )
       ) : (
         <div>Loading…</div>
@@ -70,12 +70,14 @@ export default function PostList({ posts }) {
 const Ul = styled.ul`
   list-style: none;
   display: flex;
-  gap: 1rem;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 0.5vh;
+  @media screen and (min-width: 700px) {
+    margin: 5vh 45vh;
+  }
   > li {
-    padding: 0.5vh;
+    padding: 1vh;
   }
 `;
 
@@ -83,14 +85,18 @@ const CategoryContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0.5vh;
-  margin: 1vh 0;
+  padding: 1vh 0 2vh;
   background-color: white;
+  margin-bottom: 2.5vh;
+  @media screen and (min-width: 700px) {
+    margin: 0vh 40vh;
+  }
+
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   > div {
-    margin: 2vh 0 1vh 0;
+    margin: 2vh 0 0 0;
   }
 `;
 
@@ -105,13 +111,37 @@ const CategoryButton = styled.button`
   border: none;
   border-bottom: 1px solid;
   padding: 1px;
-  font-size: 16px;
+  font-size: 1rem;
   color: #0b2b40;
+  @media screen and (min-width: 700px) {
+    font-size: 1.5rem;
+  }
 
   cursor: pointer;
 
   :hover {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1.2rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.7rem;
+      font-weight: bold;
+    }
   }
+
+`;
+
+const NoEntry = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 1rem 1rem;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+  margin: 5vh;
+  @media screen and (min-width: 700px) {
+    margin: 5vh 40vh;
+    font-size: 1.5rem;
+  }
+
 `;
