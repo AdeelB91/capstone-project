@@ -7,7 +7,6 @@ import Head from "next/head";
 import { RiBookMarkFill, RiContactsBook2Fill } from "react-icons/ri";
 import useSWR from "swr";
 import { useState } from "react";
-import { Post } from "../components/Post/Post";
 
 export default function Profile() {
   const bookmarkedPosts = useSWR("/api/bookmarked");
@@ -64,7 +63,6 @@ const ProfileHead = styled.div`
   margin-bottom: 2vh;
   position: relative;
   border: solid 1px white;
-  background-color: white;
   background-color: white;
   gap: 5vh;
   padding: 1rem 1rem 0.7rem;

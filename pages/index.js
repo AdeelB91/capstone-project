@@ -15,10 +15,7 @@ export default function HomePage() {
         <title>Capstone-Project| Home</title>
       </Head>
       <Header />
-      <MainPage>
-        {/* <Categories /> */}
-        {posts.data ? <PostList posts={posts.data} /> : null}
-      </MainPage>
+      <MainPage>{posts.data ? <PostList posts={posts.data} /> : null}</MainPage>
       <Navigation />
     </>
   );
