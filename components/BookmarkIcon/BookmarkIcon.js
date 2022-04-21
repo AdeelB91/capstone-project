@@ -5,9 +5,9 @@ export default function BookmarkIcon({ active, handleClick }) {
   return (
     <>
       {active ? (
-        <BookmarkDash size={25} onClick={() => handleClick()} />
+        <BookmarkDash onClick={() => handleClick()} />
       ) : (
-        <BookmarkHeart size={25} onClick={() => handleClick()} />
+        <BookmarkHeart onClick={() => handleClick()} />
       )}
     </>
   );
@@ -15,7 +15,15 @@ export default function BookmarkIcon({ active, handleClick }) {
 
 const BookmarkDash = styled(BsBookmarkDash)`
   cursor: pointer;
+  font-size: 25px;
+  @media screen and (min-width: 700px) {
+    font-size: 33px;
+  }
 `;
 const BookmarkHeart = styled(BsBookmarkHeart)`
   cursor: pointer;
+  font-size: 25px;
+  @media screen and (min-width: 700px) {
+    font-size: 33px;
+  }
 `;

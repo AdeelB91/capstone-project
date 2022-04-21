@@ -25,7 +25,7 @@ export function PostForm({
   }
 
   return (
-    <>
+    <main>
       <Post autoComplete="off" onSubmit={handleSubmit}>
         <div>
           <InputContainer>
@@ -66,14 +66,13 @@ export function PostForm({
           </InputContainer>
         </div>
       </Post>
-    </>
+    </main>
   );
 }
 
 const Post = styled.form`
-  background-color: white;
-
   > div {
+    background-color: white;
     display: flex;
     gap: 5vh;
     flex-direction: column;
@@ -83,9 +82,17 @@ const Post = styled.form`
       rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     padding: 3vh;
     margin: 0 0 20vh;
+    @media screen and (min-width: 700px) {
+      margin: 0vh 50vh;
+      padding: 5vh 3vh;
+      gap: 7vh;
+    }
   }
   label {
     font-size: 1.2rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.5rem;
+    }
   }
   input[type="text"] {
     appearance: none;
@@ -95,6 +102,10 @@ const Post = styled.form`
     border: 1px solid rgb(190 190 190);
     border-radius: 3px;
     font-size: 1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.3rem;
+      height: 20vh;
+    }
   }
   input[type="submit"] {
     background-color: #07549b;
@@ -103,9 +114,12 @@ const Post = styled.form`
     color: white;
     border-radius: 5px;
     border: solid 1px black;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     margin: 5vh 0 1vh;
+    @media screen and (min-width: 700px) {
+      font-size: 1.3rem;
+    }
 
     :hover {
       background: #06b9e0;
@@ -114,6 +128,9 @@ const Post = styled.form`
   }
   select {
     font-size: 1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.3rem;
+    }
   }
 `;
 

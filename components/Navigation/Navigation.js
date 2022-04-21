@@ -54,7 +54,7 @@ const Nav = styled.div`
   background-color: white;
   padding: 2vh 0 1vh;
   height: 7vh;
-  border-top: ridge 3px;
+  border-top: ridge 2px;
 `;
 
 const IconLink = styled.a`

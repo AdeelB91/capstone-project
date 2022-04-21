@@ -36,6 +36,10 @@ const PageTitle = styled.h1`
   justify-content: center;
   margin: 10vh 0 3.6vh;
   font-size: 1.7rem;
+  @media screen and (min-width: 700px) {
+    font-size: 2.3rem;
+    margin: 3vh 0;
+  }
 `;
 const CreateStylePage = styled.main``;
 

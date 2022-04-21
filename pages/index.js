@@ -15,15 +15,18 @@ export default function HomePage() {
         <title>Capstone-Project| Home</title>
       </Head>
       <Header />
-      <main>
+      <MainPage>
         {/* <Categories /> */}
         {posts.data ? <PostList posts={posts.data} /> : null}
-      </main>
+      </MainPage>
       <Navigation />
     </>
   );
 }
 
+const MainPage = styled.main`
+  padding: 0;
+`;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 

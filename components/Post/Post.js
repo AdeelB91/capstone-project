@@ -66,9 +66,8 @@ export function Post({ post }) {
           </ProfilePart>
           {isOwnPost ? (
             <Buttons>
-              <AiOutlineEdit size={21} onClick={activateEditMode} />
-              <RiDeleteBin2Line
-                size={20}
+              <EditIcon onClick={activateEditMode} />
+              <DeleteIcon
                 onClick={() => {
                   if (
                     confirm(
@@ -114,7 +113,22 @@ export function Post({ post }) {
   }
 }
 
-export const Container = styled.article`
+const DeleteIcon = styled(RiDeleteBin2Line)`
+  font-size: 20px;
+  cursor: pointer;
+  @media screen and (min-width: 700px) {
+    font-size: 28px;
+  }
+`;
+const EditIcon = styled(AiOutlineEdit)`
+  font-size: 21px;
+  cursor: pointer;
+  @media screen and (min-width: 700px) {
+    font-size: 29px;
+  }
+`;
+
+const Container = styled.article`
   background-color: white;
   padding: 1rem 1rem 0.7rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
@@ -124,12 +138,9 @@ export const Container = styled.article`
   flex-direction: column;
   gap: 2.5vh;
   margin-top: 1vh;
+
   > form {
     height: 100%;
-  }
-  img {
-    width: 33px;
-    border-radius: 20px;
   }
 `;
 
@@ -149,6 +160,9 @@ const PostFoot = styled.div`
 
   > p {
     font-size: 0.7rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -157,12 +171,21 @@ const PostMain = styled.div`
   flex-direction: column;
   gap: 3vh;
   margin: 0.5vh 0.5vh;
+  @media screen and (min-width: 700px) {
+    margin: 3vh 2vh 5vh;
+  }
 
   h4 {
     font-size: 1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.5rem;
+    }
   }
   p {
     font-size: 1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.3rem;
+    }
   }
 `;
 
@@ -176,6 +199,9 @@ const LikeContainer = styled.div`
     font-size: 11px;
     color: grey;
     padding-bottom: 0.1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -197,7 +223,18 @@ const ProfilePart = styled.div`
   align-items: flex-end;
   gap: 5px;
 
+  img {
+    width: 33px;
+    border-radius: 20px;
+    @media screen and (min-width: 700px) {
+      width: 70px;
+      border-radius: 50px;
+    }
+  }
   > p {
     font-size: small;
+    @media screen and (min-width: 700px) {
+      font-size: medium;
+    }
   }
 `;
