@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin:0;
     padding:0;
+    scroll-behavior: smooth;
   }
   body {
     color: #0B2B40;
@@ -13,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #f8f7f2
+    
   }
 
   main {

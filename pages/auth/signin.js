@@ -22,8 +22,8 @@ export default function SignIn({ providers }) {
     <>
       <LogInPage>
         {/* <Image src={"/SVG/bluelogo.svg"} width={300} height={120} /> */}
-        <Image src={"/SVG/newlogobeige.svg"} width={300} height={130} />
-        <Image src={"/SVG/AppTitle.svg"} width={300} height={90} />
+        <Image src={"/SVG/newlogobeige.svg"} width={300} height={110} />
+        <Image src={"/SVG/AppTitle.svg"} width={280} height={90} />
         <Image src={"/SVG/LogoDilemmaIcons.svg"} width={300} height={140} />
 
         <LogInContainer>
@@ -46,7 +46,7 @@ const LogInPage = styled.div`
   background-repeat: space;
   background-position: fixed;
   height: 100vh;
-  margin-top: 5vh;
+  margin: 5vh 2vh;
   display: flex;
   flex-direction: column;
 `;
