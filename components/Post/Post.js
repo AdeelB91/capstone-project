@@ -6,7 +6,6 @@ import { useSession } from "next-auth/react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import StarRating from "../StarRating/StarRating";
-import { useState } from "react";
 import useSWR from "swr";
 import { useLikePost } from "../../utils/hooks/useLikePost";
 import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
@@ -48,7 +47,9 @@ export function Post({ post }) {
           defaultValue={post.text}
           onSubmitPost={handleEdit}
           disabled={isUpdating}
-          submitText={isUpdating ? "Updating post…" : "Update post"}
+          submitText={
+            isUpdating ? "Beitrag wird geändert..." : "Beitrag ändern"
+          }
           error={error}
           id={post._id}
         />
