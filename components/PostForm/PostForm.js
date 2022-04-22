@@ -49,7 +49,7 @@ export function PostForm({
           </InputContainer>
           <InputContainer>
             <label htmlFor={`text-${id}`}>Dein Beitrag:</label>
-            <input
+            <textarea
               type="text"
               id={`text-${id}`}
               required
@@ -98,7 +98,7 @@ const Post = styled.form`
       font-size: 1.5rem;
     }
   }
-  input[type="text"] {
+  textarea {
     appearance: none;
     padding: 0.5rem;
     width: auto;
@@ -129,7 +129,6 @@ const Post = styled.form`
     }
 
     :hover {
-      background: #06b9e0;
       text-decoration: none;
     }
   }
