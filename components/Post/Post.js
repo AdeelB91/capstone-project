@@ -157,6 +157,7 @@ const PostFoot = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1vh;
+  align-items: flex-end;
 
   > p {
     font-size: 0.7rem;
@@ -170,7 +171,7 @@ const PostMain = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3vh;
-  margin: 0.5vh 0.5vh;
+  margin: 1vh 1vh;
   @media screen and (min-width: 700px) {
     margin: 3vh 2vh 5vh;
   }
@@ -193,8 +194,6 @@ const LikeContainer = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 0.1rem;
-  margin-bottom: 0.5vh;
-
   > p {
     font-size: 11px;
     color: grey;

@@ -87,7 +87,6 @@ const CategoryContainer = styled.div`
   flex-direction: column;
   padding: 1vh 0 2vh;
   background-color: white;
-  margin-bottom: 2.5vh;
   @media screen and (min-width: 700px) {
     margin: 0vh 40vh;
   }
@@ -112,7 +111,7 @@ const CategoryButton = styled.button`
   border-bottom: 1px solid;
   padding: 1px;
   font-size: 1rem;
-  color: #0b2b40;
+  color: #385782;
   @media screen and (min-width: 700px) {
     font-size: 1.5rem;
   }
@@ -127,7 +126,6 @@ const CategoryButton = styled.button`
       font-weight: bold;
     }
   }
-
 `;
 
 const NoEntry = styled.div`
@@ -143,5 +141,4 @@ const NoEntry = styled.div`
     margin: 5vh 40vh;
     font-size: 1.5rem;
   }
-
 `;

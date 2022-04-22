@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GoSignOut } from "react-icons/go";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 
@@ -8,13 +9,18 @@ export default function Header() {
 
   return (
     <AppHeader>
-      <LogoImage
+      {/* <LogoImage
         alt="App Logo"
         src={"/SVG/bluelogo.svg"}
         width={30}
         height={40}
+      /> */}
+      <NameImage
+        alt="App Name"
+        src={"/SVG/schriftheader.svg"}
+        width={250}
+        height={49}
       />
-      <NameImage alt="App Name" src={"/SVG/blue.svg"} width={250} height={50} />
 
       <div>
         <SignOutButton
@@ -27,24 +33,28 @@ export default function Header() {
 }
 
 const AppHeader = styled.header`
-  background-color: white;
-  height: 8vh;
+  height: 9vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 0.8vh;
+  padding: 1h;
   border-bottom: solid 2px;
+  justify-content: center;
+  position: relative;
+  background-color: white;
 
   > div {
     cursor: pointer;
+    position: absolute;
+    right: 0;
   }
 `;
 
 const LogoImage = styled(Image)``;
 const NameImage = styled(Image)``;
 
-const SignOutButton = styled(GoSignOut)`
-  font-size: 30px;
+const SignOutButton = styled(RiLogoutBoxRLine)`
+  font-size: 27px;
   @media screen and (min-width: 700px) {
     font-size: 40px;
   }

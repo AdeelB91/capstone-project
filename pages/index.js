@@ -5,6 +5,7 @@ import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import useSWR from "swr";
+import Image from "next/image";
 
 export default function HomePage() {
   const posts = useSWR("/api/feed");
@@ -15,14 +16,22 @@ export default function HomePage() {
         <title>Capstone-Project| Home</title>
       </Head>
       <Header />
-      <MainPage>{posts.data ? <PostList posts={posts.data} /> : null}</MainPage>
+      <main>
+        <Image
+          alt="App Beschreibung"
+          src={"/SVG/Description.svg"}
+          width={375}
+          height={85}
+        />
+        {/* <Description>Kein 20Uhr Dilemma mit Dilemma20</Description> */}
+        {posts.data ? <PostList posts={posts.data} /> : null}
+      </main>
       <Navigation />
     </>
   );
 }
-
-const MainPage = styled.main`
-  padding: 0;
+const Description = styled.h1`
+  font-size: 1.5rem;
 `;
 export async function getServerSideProps(context) {
   const session = await getSession(context);

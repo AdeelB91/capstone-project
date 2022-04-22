@@ -36,6 +36,7 @@ export function PostForm({
               name="category"
               type="text"
               form="true"
+              required
               defaultcategory={defaultcategory}
             >
               <option value="">Kategorie auswählen</option>
@@ -47,7 +48,7 @@ export function PostForm({
             </select>
           </InputContainer>
           <InputContainer>
-            <label htmlFor={`text-${id}`}>Beitrag:</label>
+            <label htmlFor={`text-${id}`}>Dein Beitrag:</label>
             <input
               type="text"
               id={`text-${id}`}
@@ -71,6 +72,7 @@ export function PostForm({
 }
 
 const Post = styled.form`
+  margin: 2vh 3vh;
   > div {
     background-color: white;
     display: flex;
@@ -81,7 +83,6 @@ const Post = styled.form`
       rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
       rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     padding: 3vh;
-    margin: 0 0 20vh;
     @media screen and (min-width: 700px) {
       margin: 0vh 50vh;
       padding: 5vh 3vh;
@@ -89,7 +90,9 @@ const Post = styled.form`
     }
   }
   label {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #385782;
     @media screen and (min-width: 700px) {
       font-size: 1.5rem;
     }
@@ -102,16 +105,17 @@ const Post = styled.form`
     border: 1px solid rgb(190 190 190);
     border-radius: 3px;
     font-size: 1rem;
+    background-color: #f8f7f2;
     @media screen and (min-width: 700px) {
       font-size: 1.3rem;
       height: 20vh;
     }
   }
   input[type="submit"] {
-    background-color: #07549b;
+    background-color: #385782;
     width: fit-content;
     padding: 0.5vh 1vh;
-    color: white;
+    color: #f8f7f2;
     border-radius: 5px;
     border: solid 1px black;
     font-size: 1rem;
@@ -127,7 +131,11 @@ const Post = styled.form`
     }
   }
   select {
-    font-size: 1rem;
+    font-weight: lighter;
+    color: grey;
+    font-size: 0.9rem;
+    background-color: #f8f7f2;
+
     @media screen and (min-width: 700px) {
       font-size: 1.3rem;
     }

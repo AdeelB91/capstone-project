@@ -21,8 +21,10 @@ export default function SignIn({ providers }) {
   return (
     <>
       <LogInPage>
-        <Image src={"/SVG/bluelogo.svg"} width={300} height={120} />
-        <Image src={"/SVG/blue.svg"} width={300} height={100} />
+        {/* <Image src={"/SVG/bluelogo.svg"} width={300} height={120} /> */}
+        <Image src={"/SVG/newlogobeige.svg"} width={300} height={130} />
+
+        <Image src={"/SVG/AppTitle.svg"} width={300} height={150} />
         <LogInContainer>
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
@@ -46,7 +48,7 @@ const LogInPage = styled.div`
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 1vh;
 `;
 
 const LogInContainer = styled.div`
@@ -54,20 +56,20 @@ const LogInContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5vh;
-  margin-top: 15vh;
+  margin-top: 5vh;
 `;
 const LogInButton = styled.button`
   display: flex;
   align-items: center;
   width: auto;
-  padding: 1vh;
+  padding: 1.1vh;
   border: none;
   outline: none;
-  color: white;
-  background: #1167b7;
+  color: #f8f7f2;
+  background: #385782;
   cursor: pointer;
   position: relative;
-  border: black solid 2px;
+  border: black solid 1.5px;
   font-size: 0.9rem;
   z-index: 0;
   border-radius: 10px;
@@ -118,7 +120,7 @@ const LogInButton = styled.button`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #1167b7;
+    background: #385782;
     left: 0;
     top: 0;
     border-radius: 10px;

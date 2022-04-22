@@ -37,17 +37,17 @@ export default function Profile() {
               <p>{session.user.email}</p>
             </Info>
           </ProfilePart>
-          <IconContainer>
-            <ProfileIcon
-              className={active === true ? "active" : ""}
-              onClick={handleClick}
-            />
-            <BookmarkIcon
-              className={!active === true ? "active" : ""}
-              onClick={handleBookmarks}
-            />
-          </IconContainer>
         </ProfileHead>
+        <IconContainer>
+          <ProfileIcon
+            className={active === true ? "active" : ""}
+            onClick={handleClick}
+          />
+          <BookmarkIcon
+            className={!active === true ? "active" : ""}
+            onClick={handleBookmarks}
+          />
+        </IconContainer>
         {active ? <PostList posts={ownPosts.data} /> : null}
 
         {!active ? <PostList posts={bookmarkedPosts.data} /> : null}
@@ -60,24 +60,26 @@ export default function Profile() {
 const ProfileHead = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2vh;
+  gap: 5vh;
+  margin: 0 0 2vh;
   position: relative;
   border: solid 1px white;
   background-color: white;
-  gap: 5vh;
   padding: 1rem 1rem 0.7rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
   @media screen and (min-width: 700px) {
     margin: 1vh 40vh 0.3vh;
+  }
+  p {
+    font-size: 1.5rem;
   }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin: 1vh;
   gap: 10vh;
 `;
 
@@ -97,14 +99,18 @@ const ProfilePart = styled.div`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.5vh;
   > h2 {
     font-size: 2.4rem;
+    color: #385782;
     @media screen and (min-width: 700px) {
       font-size: 3.5rem;
     }
   }
   p {
     font-size: 1rem;
+    color: #385782;
+
     @media screen and (min-width: 700px) {
       font-size: 1.5rem;
     }
