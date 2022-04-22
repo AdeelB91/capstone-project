@@ -23,8 +23,9 @@ export default function SignIn({ providers }) {
       <LogInPage>
         {/* <Image src={"/SVG/bluelogo.svg"} width={300} height={120} /> */}
         <Image src={"/SVG/newlogobeige.svg"} width={300} height={130} />
+        <Image src={"/SVG/AppTitle.svg"} width={300} height={90} />
+        <Image src={"/SVG/LogoDilemmaIcons.svg"} width={300} height={140} />
 
-        <Image src={"/SVG/LogoDilemmaIcons.svg"} width={300} height={150} />
         <LogInContainer>
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
@@ -45,10 +46,9 @@ const LogInPage = styled.div`
   background-repeat: space;
   background-position: fixed;
   height: 100vh;
-  margin-top: 8vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
-  gap: 6vh;
 `;
 
 const LogInContainer = styled.div`
@@ -56,7 +56,7 @@ const LogInContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5vh;
-  margin-top: 5vh;
+  margin-top: 3vh;
 `;
 const LogInButton = styled.button`
   display: flex;

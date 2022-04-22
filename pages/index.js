@@ -17,24 +17,29 @@ export default function HomePage() {
       </Head>
       <Header />
       <main>
-        <Description>KEIN 20UHR DILEMMA,</Description>
-        <Description>
-          MIT DILEMMA<span style={{ color: "black" }}>20</span>!
-        </Description>
+        <DescriptionContainer>
+          <Description>KEIN 20UHR DILEMMA,</Description>
+          <Description>
+            MIT DILEMMA<span style={{ color: "black" }}>20</span>!
+          </Description>
+        </DescriptionContainer>
         {posts.data ? <PostList posts={posts.data} /> : null}
       </main>
       <Navigation />
     </>
   );
 }
+
+const DescriptionContainer = styled.div`
+  margin: 4vh;
+`;
+
 const Description = styled.p`
-  font-size: 1.6rem;
-  margin: 3vh 0 2vh;
+  font-size: 1.4rem;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   color: #385782;
   font-weight: bold;
-  letter-spacing: 2px;
   > p {
     color: black;
   }

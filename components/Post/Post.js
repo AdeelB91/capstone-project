@@ -12,7 +12,7 @@ import { useLikePost } from "../../utils/hooks/useLikePost";
 import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
 import { useBookmarkPost } from "../../utils/hooks/useBookmarkPost";
 
-const dateFormatter = Intl.DateTimeFormat("en", {
+const dateFormatter = Intl.DateTimeFormat("de", {
   dateStyle: "long",
   timeStyle: "short",
 });

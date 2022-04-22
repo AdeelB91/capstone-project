@@ -9,19 +9,21 @@ export default function Header() {
 
   return (
     <AppHeader>
-      {/* <LogoImage
+      <LogoImage
         alt="App Logo"
-        src={"/SVG/bluelogo.svg"}
-        width={30}
-        height={40}
-      /> */}
-      <NameImage
-        alt="App Name"
-        src={"/SVG/schriftheader.svg"}
-        width={250}
-        height={49}
+        src={"/SVG/newlogobeige.svg"}
+        width={35}
+        height={45}
       />
-
+      {/* <NameImage
+        alt="App Name"
+        src={"/SVG/AppTitle.svg"}
+        width={230}
+        height={50}
+      /> */}
+      <h1>
+        DILEMMA<span style={{ color: "black" }}>20</span>
+      </h1>
       <div>
         <SignOutButton
           onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
@@ -37,17 +39,18 @@ const AppHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1h;
   border-bottom: solid 2px;
-  justify-content: center;
   position: relative;
   background-color: white;
+  padding: 1.5vh 1vh 0.5vh;
+  background-color: white;
+
+  h1 {
+    letter-spacing: 3px;
+  }
 
   > div {
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    margin: 0.5vh;
   }
 `;
 

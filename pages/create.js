@@ -16,9 +16,10 @@ export default function CreatePage() {
       </Head>
       <Header />
       <CreateStylePage>
-        <PageTitle>TEILE DEINE EMPFEHLUNG</PageTitle>
-        <PageTitle>GEGEN DAS 20 UHR DILEMMA!</PageTitle>
-
+        <CreateText>
+          <PageTitle>TEILE DEINE EMPFEHLUNG</PageTitle>
+          <PageTitle>GEGEN DAS 20UHR DILEMMA!</PageTitle>
+        </CreateText>
         <PostForm
           onSubmitPost={handleCreate}
           disabled={isCreating}
@@ -34,16 +35,17 @@ export default function CreatePage() {
   );
 }
 
+const CreateText = styled.div`
+  margin: 5vh;
+`;
 const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
-  margin: 3vh 1vh 2vh;
   font-size: 1.27rem;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   color: #385782;
   font-weight: bold;
-  letter-spacing: 2px;
 
   @media screen and (min-width: 700px) {
     font-size: 2.3rem;
