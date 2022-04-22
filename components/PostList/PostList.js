@@ -110,8 +110,10 @@ const CategoryButton = styled.button`
   border: none;
   border-bottom: 1px solid;
   padding: 1px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #385782;
+  font-family: "Josefin Sans";
+
   @media screen and (min-width: 700px) {
     font-size: 1.5rem;
   }

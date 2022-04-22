@@ -72,7 +72,7 @@ export function PostForm({
 }
 
 const Post = styled.form`
-  margin: 2vh 3vh;
+  margin: 8vh 3vh;
   > div {
     background-color: white;
     display: flex;
@@ -90,9 +90,10 @@ const Post = styled.form`
     }
   }
   label {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #385782;
+    font-family: "Josefin Sans", sans-serif;
     @media screen and (min-width: 700px) {
       font-size: 1.5rem;
     }
@@ -121,6 +122,8 @@ const Post = styled.form`
     font-size: 1rem;
     cursor: pointer;
     margin: 5vh 0 1vh;
+    font-family: "Josefin Sans", sans-serif;
+
     @media screen and (min-width: 700px) {
       font-size: 1.3rem;
     }
@@ -132,9 +135,10 @@ const Post = styled.form`
   }
   select {
     font-weight: lighter;
-    color: grey;
+    color: black;
     font-size: 0.9rem;
     background-color: #f8f7f2;
+    font-family: "Josefin Sans", sans-serif;
 
     @media screen and (min-width: 700px) {
       font-size: 1.3rem;

@@ -16,10 +16,9 @@ export default function CreatePage() {
       </Head>
       <Header />
       <CreateStylePage>
-        <Image src={"/SVG/Createschrift.svg.svg"} width={375} height={150} />
-        {/* <PageTitle>
-          Teile deine Empfehlung und rette sie raus aus dem Dilemma20!
-        </PageTitle> */}
+        <PageTitle>TEILE DEINE EMPFEHLUNG</PageTitle>
+        <PageTitle>GEGEN DAS 20 UHR DILEMMA!</PageTitle>
+
         <PostForm
           onSubmitPost={handleCreate}
           disabled={isCreating}
@@ -38,8 +37,14 @@ export default function CreatePage() {
 const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
-  margin: 5vh 1vh 3.6vh;
-  font-size: 1.7rem;
+  margin: 3vh 1vh 2vh;
+  font-size: 1.27rem;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  color: #385782;
+  font-weight: bold;
+  letter-spacing: 2px;
+
   @media screen and (min-width: 700px) {
     font-size: 2.3rem;
     margin: 3vh 0;

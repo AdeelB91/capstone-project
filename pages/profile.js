@@ -79,7 +79,7 @@ const ProfileHead = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1vh;
+  margin: 1.5vh;
   gap: 10vh;
 `;
 
@@ -102,7 +102,9 @@ const Info = styled.div`
   gap: 0.5vh;
   > h2 {
     font-size: 2.4rem;
-    color: #385782;
+    color: #0b2b40;
+    font-family: "Josefin Sans", sans-serif;
+
     @media screen and (min-width: 700px) {
       font-size: 3.5rem;
     }
@@ -110,6 +112,7 @@ const Info = styled.div`
   p {
     font-size: 1rem;
     color: #385782;
+    font-family: "Josefin Sans", sans-serif;
 
     @media screen and (min-width: 700px) {
       font-size: 1.5rem;

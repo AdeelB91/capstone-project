@@ -47,6 +47,7 @@ const AppHeader = styled.header`
     cursor: pointer;
     position: absolute;
     right: 0;
+    margin: 0.5vh;
   }
 `;
 

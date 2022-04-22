@@ -17,21 +17,27 @@ export default function HomePage() {
       </Head>
       <Header />
       <main>
-        <Image
-          alt="App Beschreibung"
-          src={"/SVG/Description.svg"}
-          width={375}
-          height={85}
-        />
-        {/* <Description>Kein 20Uhr Dilemma mit Dilemma20</Description> */}
+        <Description>KEIN 20UHR DILEMMA,</Description>
+        <Description>
+          MIT DILEMMA<span style={{ color: "black" }}>20</span>!
+        </Description>
         {posts.data ? <PostList posts={posts.data} /> : null}
       </main>
       <Navigation />
     </>
   );
 }
-const Description = styled.h1`
-  font-size: 1.5rem;
+const Description = styled.p`
+  font-size: 1.6rem;
+  margin: 3vh 0 2vh;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  color: #385782;
+  font-weight: bold;
+  letter-spacing: 2px;
+  > p {
+    color: black;
+  }
 `;
 export async function getServerSideProps(context) {
   const session = await getSession(context);

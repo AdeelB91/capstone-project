@@ -177,13 +177,16 @@ const PostMain = styled.div`
   }
 
   h4 {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-family: "Josefin Sans", sans-serif;
+
     @media screen and (min-width: 700px) {
       font-size: 1.5rem;
     }
   }
   p {
     font-size: 1rem;
+
     @media screen and (min-width: 700px) {
       font-size: 1.3rem;
     }
@@ -220,7 +223,7 @@ const ProfilePart = styled.div`
   top: 5px;
   display: flex;
   align-items: flex-end;
-  gap: 5px;
+  gap: 2px;
 
   img {
     width: 33px;
@@ -231,7 +234,9 @@ const ProfilePart = styled.div`
     }
   }
   > p {
-    font-size: small;
+    font-size: 14px;
+    font-family: "Josefin Sans";
+
     @media screen and (min-width: 700px) {
       font-size: medium;
     }

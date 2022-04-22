@@ -52,13 +52,16 @@ const Nav = styled.div`
   bottom: 0;
   width: 100%;
   background-color: white;
-  padding: 2vh 0 1vh;
+  padding: 1vh;
   height: 7vh;
   border-top: ridge 1.5px lightgrey;
 `;
 
 const IconLink = styled.a`
+  display: flex;
+  flex-direction: column;
   opacity: 0.5;
+
   &.active {
     /* border: solid white 2px;
     border-radius: 5px; */

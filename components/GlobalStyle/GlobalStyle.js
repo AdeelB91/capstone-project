@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');  * {
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');  
+* {
     box-sizing: border-box;
     margin:0;
     padding:0;
@@ -23,5 +23,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-family: 'Josefin Sans', sans-serif;  
+    font-family: 'Josefin Sans', sans-serif; 
+    color: #385782 
   }`;
