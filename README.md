@@ -5,14 +5,17 @@
 
 ## `Description`
 
-### No 20 o'clock Dilemma with Dilemma20
+### No more 20:00 dilemma with Dilemma20.
 
 <img width="700" alt="App" src="https://user-images.githubusercontent.com/98757476/165078837-9391b05a-8e3c-4206-a404-4fed4fe948bc.png">
 
 
-Dilemma20 is an app that saves you from thinking about what to watch, read or listen to.
-The recommendations are categorized into movies, series, books and podcasts.
-Get inspired by the recommendations of the community and contribute yourself so that there is no 20 o'clock Dilemma anymore.
+Dilemma20 will save up your evening! 
+
+Dilemma20 is an app that dispenses you from thinking about what to watch, read or listen to at 20:00.
+The recommendations are categorized into films, series, books and podcasts.
+Get inspried by community recommendations and contribute yourself. 
+There won't be any 20:00 dilemma any longer.
 
 ### `Demo`
 
