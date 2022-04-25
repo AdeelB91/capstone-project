@@ -63,8 +63,6 @@ const IconLink = styled.a`
   opacity: 0.5;
 
   &.active {
-    /* border: solid white 2px;
-    border-radius: 5px; */
     opacity: 1;
   }
 `;

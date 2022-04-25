@@ -17,11 +17,6 @@ export default async function handler(request, response) {
       case "PATCH":
         const user = await User.findById(session.user.id);
 
-        // await User.updateOne(
-        //   { _id: session.user.id },
-        //   { $addToSet: { bookmarkedPosts: [postId] } }
-        // );
-
         const isBookmarked = user.bookmarkedPosts.includes(postId);
         const updateOperation = isBookmarked ? "$pull" : "$push";
 

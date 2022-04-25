@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { FcGoogle } from "react-icons/fc";
 
 export default function SignIn({ providers }) {
   const { data: session } = useSession();
@@ -21,10 +20,24 @@ export default function SignIn({ providers }) {
   return (
     <>
       <LogInPage>
-        {/* <Image src={"/SVG/bluelogo.svg"} width={300} height={120} /> */}
-        <Image src={"/SVG/newlogobeige.svg"} width={300} height={110} />
-        <Image src={"/SVG/AppTitle.svg"} width={280} height={90} />
-        <Image src={"/SVG/LogoDilemmaIcons.svg"} width={300} height={140} />
+        <Image
+          alt="App Logo"
+          src={"/SVG/newlogobeige.svg"}
+          width={300}
+          height={110}
+        />
+        <Image
+          alt="App Title"
+          src={"/SVG/AppTitle.svg"}
+          width={280}
+          height={90}
+        />
+        <Image
+          alt="App Image"
+          src={"/SVG/LogoDilemmaIcons.svg"}
+          width={300}
+          height={140}
+        />
 
         <LogInContainer>
           {Object.values(providers).map((provider) => (
@@ -41,11 +54,6 @@ export default function SignIn({ providers }) {
 }
 
 const LogInPage = styled.div`
-  /* background-image: url("/SVG/Vector 7.svg"); */
-  background-size: 100%;
-  background-repeat: space;
-  background-position: fixed;
-  height: 100vh;
   margin: 5vh 2vh;
   display: flex;
   flex-direction: column;

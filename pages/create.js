@@ -5,7 +5,6 @@ import { useCreatePost } from "../utils/hooks/useCreatedPost";
 import Header from "../components/Header/Header";
 import styled from "styled-components";
 import Head from "next/head";
-import Image from "next/image";
 
 export default function CreatePage() {
   const { handleCreate, isCreating, error } = useCreatePost();
