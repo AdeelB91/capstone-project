@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import { Post } from "../Post/Post";
 import styled from "styled-components";
 import { categories } from "../../categories";
@@ -14,8 +13,6 @@ export default function PostList({ posts }) {
   function handleClick(category) {
     setCategoryFilter(category);
     setActive(true);
-
-    // console.log();
   }
 
   function handleShowAll() {

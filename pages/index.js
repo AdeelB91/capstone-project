@@ -5,7 +5,6 @@ import Header from "../components/Header/Header";
 import Navigation from "../components/Navigation/Navigation";
 import PostList from "../components/PostList/PostList";
 import useSWR from "swr";
-import Image from "next/image";
 
 export default function HomePage() {
   const posts = useSWR("/api/feed");
