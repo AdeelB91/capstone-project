@@ -19,7 +19,7 @@ There won't be any 20:00 dilemma any longer.
 
 ### `Demo`
 
-You can find the hosted version on firebase:
+You can find the hosted version on Vercel:
 [Demo Version](https://capstone-project-sage-alpha.vercel.app/)
 
 ## `Tech Stack`
